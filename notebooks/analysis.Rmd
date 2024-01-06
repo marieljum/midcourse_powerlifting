@@ -1,0 +1,24 @@
+---
+title: "Exploration of USAPL POwerlifting Database Using R"
+output: html_notebook
+---
+```{r}
+library('tidyverse')
+```
+
+1. Using the read_csv() function, read the dataset into your notebook as a tibble called usapl_data. After reading it in, inspect the first 10 rows and then inspect the last 10 rows.
+
+```{r}
+usapl_data <- read_csv('../data/USAPL_powerlifting.csv', show_col_types = FALSE)
+usapl_df <- read_csv('../data/USAPL_powerlifting_df.csv', show_col_types = FALSE)
+```
+
+```{r}
+usapl_data |> 
+  tail(10)
+```
+
+```{r}
+unique(usapl_data$`BP Points`)
+```
+
