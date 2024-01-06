@@ -1,1 +1,1 @@
-# powerlifting_with_r
+# Data Exploration and Visualization of USAPL Powerlifting Data
