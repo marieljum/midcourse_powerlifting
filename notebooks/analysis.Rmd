@@ -1,5 +1,5 @@
 ---
-title: "Exploration of USAPL POwerlifting Database Using R"
+title: "Exploration of USAPL Powerlifting Database Using R"
 output: html_notebook
 ---
 ```{r}
@@ -10,7 +10,7 @@ library('tidyverse')
 
 ```{r}
 usapl_data <- read_csv('../data/USAPL_powerlifting.csv', show_col_types = FALSE)
-usapl_df <- read_csv('../data/USAPL_powerlifting_df.csv', show_col_types = FALSE)
+comp_types <- read_csv('../data/USAPL_competitions.csv', show_col_types = FALSE)
 ```
 
 ```{r}
@@ -19,6 +19,6 @@ usapl_data |>
 ```
 
 ```{r}
-unique(usapl_data$`BP Points`)
+unique(usapl_data$Category)
 ```
 
