@@ -9,14 +9,9 @@ library('tidyverse')
 1. Using the read_csv() function, read the dataset into your notebook as a tibble called usapl_data. After reading it in, inspect the first 10 rows and then inspect the last 10 rows.
 
 ```{r}
-usapl_data <- read_csv('../data/USAPL_powerlifting.csv', show_col_types = FALSE)
 comp_types <- read_csv('../data/USAPL_competitions.csv', show_col_types = FALSE)
 usapl <- read_csv('../data/usapl.csv', show_col_types = FALSE)
-```
-
-```{r}
-usapl_data |> 
-  tail(10)
+us_states <- read.delim('../data/us_states', header = TRUE)
 ```
 
 ```{r}
@@ -30,5 +25,58 @@ length(unique(comp_types$`Sanction Number`))
 ```
 ```{r}
 (unique(comp_types$`Meet Type`))
+```
+
+```{r}
+usapl |> 
+  select(1:5) |> 
+  distinct(`Meet Name`, `Meet Date`, .keep_all = TRUE)
+```
+```{r}
+comp_types <- comp_types |> 
+  rename(`Meet Date` = Date, `Meet Name` = Name, `Meet Location`= State)
+```
+
+```{r}
+usapl |> 
+  filter(`Meet Name` == "2018 World Open Championships")
+```
+
+
+**Compare usapl DataFrame (df with webscraped results from competitions) to comp_types DataFrame (df with list of all competitions in USAPL website). Why are there 3255 results in comp_types and only 390 (unique) results in usapl df?**
+```{r}
+missing_data_usapl <- anti_join(usapl, comp_types, by = c("Meet Name", "Sanction Number"))
+
+missing_data_usapl
+```
+```{r}
+missing_data_comp <- anti_join(comp_types, usapl, by = c("Meet Name", "Meet Date", "Sanction Number"))
+
+missing_data_comp
+```
+Search usapl df for meets that showed up in missing data df:
+```{r}
+usapl |> 
+  filter(`Meet Name` == "World Men's Classic Championships")
+```
+```{r}
+us_meets <- comp_types |> 
+  filter(`Meet Location` %in% us_states$Name)
+```
+
+In US meets, extract the urls that looks normal (contains "https://usapl.liftingdatabase.com/competitions-view"):
+```{r}
+us_meets_good <- us_meets |>
+  filter(grepl("https://usapl.liftingdatabase.com/competitions-view", Website))
+```
+```{r}
+us_meets_faulty_url <- us_meets |>
+  filter(grepl("https://usapl.liftingdatabase.com/http://", Website))
+```
+
+Check usapl dataframe if it has any of the competitions listed in us_meets_good:
+```{r}
+us_meets_good |> 
+  filter(`Meet Name` == "Iowa State Open")
 ```
 
