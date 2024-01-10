@@ -1758,13 +1758,13 @@ Using R</h1>
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSgndGlkeXZlcnNlJylcbmBgYCJ9 -->
 <pre class="r"><code>library(&#39;tidyverse&#39;)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoi4pSA4pSAIEF0dGFjaGluZyBjb3JlIHRpZHl2ZXJzZSBwYWNrYWdlcyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgdGlkeXZlcnNlIDIuMC4wIOKUgOKUgFxu4pyUIGRwbHlyICAgICAxLjEuMyAgICAg4pyUIHJlYWRyICAgICAyLjEuNFxu4pyUIGZvcmNhdHMgICAxLjAuMCAgICAg4pyUIHN0cmluZ3IgICAxLjUuMVxu4pyUIGdncGxvdDIgICAzLjQuNCAgICAg4pyUIHRpYmJsZSAgICAzLjIuMVxu4pyUIGx1YnJpZGF0ZSAxLjkuMyAgICAg4pyUIHRpZHlyICAgICAxLjMuMFxu4pyUIHB1cnJyICAgICAxLjAuMiAgICAg4pSA4pSAIENvbmZsaWN0cyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgdGlkeXZlcnNlX2NvbmZsaWN0cygpIOKUgOKUgFxu4pyWIGRwbHlyOjpmaWx0ZXIoKSBtYXNrcyBzdGF0czo6ZmlsdGVyKClcbuKcliBkcGx5cjo6bGFnKCkgICAgbWFza3Mgc3RhdHM6OmxhZygpXG7ihLkgVXNlIHRoZSBcdTAwMWJdODs7aHR0cDovL2NvbmZsaWN0ZWQuci1saWIub3JnL1x1MDAwN2NvbmZsaWN0ZWQgcGFja2FnZVx1MDAxYl04OztcdTAwMDcgdG8gZm9yY2UgYWxsIGNvbmZsaWN0cyB0byBiZWNvbWUgZXJyb3JzXG4ifQ== -->
-<pre><code>── Attaching core tidyverse packages ───────────────────────── tidyverse 2.0.0 ──
+<!-- rnb-output-begin eyJkYXRhIjoi4pSA4pSAIEF0dGFjaGluZyBjb3JlIHRpZHl2ZXJzZSBwYWNrYWdlcyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgdGlkeXZlcnNlIDIuMC4wIOKUgOKUgFxu4pyUIGRwbHlyICAgICAxLjEuMyAgICAg4pyUIHJlYWRyICAgICAyLjEuNFxu4pyUIGZvcmNhdHMgICAxLjAuMCAgICAg4pyUIHN0cmluZ3IgICAxLjUuMVxu4pyUIGdncGxvdDIgICAzLjQuNCAgICAg4pyUIHRpYmJsZSAgICAzLjIuMVxu4pyUIGx1YnJpZGF0ZSAxLjkuMyAgICAg4pyUIHRpZHlyICAgICAxLjMuMFxu4pyUIHB1cnJyICAgICAxLjAuMiAgICAg4pSA4pSAIENvbmZsaWN0cyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgdGlkeXZlcnNlX2NvbmZsaWN0cygpIOKUgOKUgFxu4pyWIGRwbHlyOjpmaWx0ZXIoKSBtYXNrcyBzdGF0czo6ZmlsdGVyKClcbuKcliBkcGx5cjo6bGFnKCkgICAgbWFza3Mgc3RhdHM6OmxhZygpXG7ihLkgVXNlIHRoZSBcdTAwMWJdODs7aHR0cDovL2NvbmZsaWN0ZWQuci1saWIub3JnL1x1MDAwN2NvbmZsaWN0ZWQgcGFja2FnZVx1MDAxYl04OztcdTAwMDcgdG8gZm9yY2UgYWxsIGNvbmZsaWN0cyB0byBiZWNvbWUgZXJyb3JzXG4ifQ== -->
+<pre><code>── Attaching core tidyverse packages ──────────────────────────────────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.3     ✔ readr     2.1.4
 ✔ forcats   1.0.0     ✔ stringr   1.5.1
 ✔ ggplot2   3.4.4     ✔ tibble    3.2.1
 ✔ lubridate 1.9.3     ✔ tidyr     1.3.0
-✔ purrr     1.0.2     ── Conflicts ─────────────────────────────────────────── tidyverse_conflicts() ──
+✔ purrr     1.0.2     ── Conflicts ────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the ]8;;http://conflicted.r-lib.org/conflicted package]8;; to force all conflicts to become errors</code></pre>
@@ -1778,9 +1778,11 @@ rows and then inspect the last 10 rows.</li>
 </ol>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudXNhcGxfZGF0YSA8LSByZWFkX2NzdignLi4vZGF0YS9VU0FQTF9wb3dlcmxpZnRpbmcuY3N2Jywgc2hvd19jb2xfdHlwZXMgPSBGQUxTRSlcbmNvbXBfdHlwZXMgPC0gcmVhZF9jc3YoJy4uL2RhdGEvVVNBUExfY29tcGV0aXRpb25zLmNzdicsIHNob3dfY29sX3R5cGVzID0gRkFMU0UpXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudXNhcGxfZGF0YSA8LSByZWFkX2NzdignLi4vZGF0YS9VU0FQTF9wb3dlcmxpZnRpbmcuY3N2Jywgc2hvd19jb2xfdHlwZXMgPSBGQUxTRSlcbmNvbXBfdHlwZXMgPC0gcmVhZF9jc3YoJy4uL2RhdGEvVVNBUExfY29tcGV0aXRpb25zLmNzdicsIHNob3dfY29sX3R5cGVzID0gRkFMU0UpXG5leGFtcGxlIDwtIHJlYWRfY3N2KCcuLi9kYXRhL2V4YW1wbGUuY3N2Jywgc2hvd19jb2xfdHlwZXMgPSBGQUxTRSlcbnVzYXBsIDwtIHJlYWRfY3N2KCcuLi9kYXRhL3VzYXBsLmNzdicsIHNob3dfY29sX3R5cGVzID0gRkFMU0UpXG5gYGAifQ== -->
 <pre class="r"><code>usapl_data &lt;- read_csv(&#39;../data/USAPL_powerlifting.csv&#39;, show_col_types = FALSE)
-comp_types &lt;- read_csv(&#39;../data/USAPL_competitions.csv&#39;, show_col_types = FALSE)</code></pre>
+comp_types &lt;- read_csv(&#39;../data/USAPL_competitions.csv&#39;, show_col_types = FALSE)
+example &lt;- read_csv(&#39;../data/example.csv&#39;, show_col_types = FALSE)
+usapl &lt;- read_csv(&#39;../data/usapl.csv&#39;, show_col_types = FALSE)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -1801,147 +1803,41 @@ comp_types &lt;- read_csv(&#39;../data/USAPL_competitions.csv&#39;, show_col_typ
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudW5pcXVlKHVzYXBsX2RhdGEkQ2F0ZWdvcnkpXG5gYGAifQ== -->
-<pre class="r"><code>unique(usapl_data$Category)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGVuZ3RoKHVuaXF1ZSh1c2FwbCRgU2FuY3Rpb24gTnVtYmVyYCkpXG5gYGAifQ== -->
+<pre class="r"><code>length(unique(usapl$`Sanction Number`))</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiICBbMV0gXCJGZW1hbGVcIiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXCJNYWxlXCIgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBcbiAgWzNdIFwiRmVtYWxlIC0gUmF3IEd1ZXN0IExpZnRlclwiICAgICAgICAgIFwiRmVtYWxlIC0gUmF3IEp1bmlvclwiICAgICAgICAgICAgICAgXG4gIFs1XSBcIkZlbWFsZSAtIFJhdyBNYXN0ZXJcIiAgICAgICAgICAgICAgICBcIkZlbWFsZSAtIFJhdyBPcGVuXCIgICAgICAgICAgICAgICAgIFxuICBbN10gXCJNYWxlIC0gUmF3IEd1ZXN0IExpZnRlclwiICAgICAgICAgICAgXCJNYWxlIC0gUmF3IE9wZW5cIiAgICAgICAgICAgICAgICAgICBcbiAgWzldIFwiTWFsZSAtIFJhdyBUZWVuXCIgICAgICAgICAgICAgICAgICAgIFwiTWFsZSAtIFJhdyB3aXRoIFdyYXBzIEd1ZXN0IExpZnRlclwiXG4gWzExXSBcIkZlbWFsZSAtIFJhdyBDb2xsZWdpYXRlXCIgICAgICAgICAgICBcIk1hbGUgLSBSYXcgQ29sbGVnaWF0ZVwiICAgICAgICAgICAgIFxuIFsxM10gXCJNYWxlIC0gUmF3IFlvdXRoIDNcIiAgICAgICAgICAgICAgICAgXCJGZW1hbGUgLSBSYXcgTWFzdGVyIDFhXCIgICAgICAgICAgICBcbiBbMTVdIFwiRmVtYWxlIC0gUmF3IE1hc3RlciAxYlwiICAgICAgICAgICAgIFwiTWFsZSAtIFJhdyBNYXN0ZXIgMWFcIiAgICAgICAgICAgICAgXG4gWzE3XSBcIk1hbGUgLSBSYXcgTWFzdGVyIDJiXCIgICAgICAgICAgICAgICBcIk1hbGUgLSBSYXcgVGVlbiAzXCIgICAgICAgICAgICAgICAgIFxuIFsxOV0gXCJNYWxlIC0gUmF3IEp1bmlvclwiICAgICAgICAgICAgICAgICAgXCJNYWxlIC0gUmF3IE1hc3RlciAxYlwiICAgICAgICAgICAgICBcbiBbMjFdIFwiTWFsZSAtIFJhdyBQb2xpY2UgYW5kIEZpcmVcIiAgICAgICAgIFwiTWFsZSAtIFJhdyBUZWVuIDFcIiAgICAgICAgICAgICAgICAgXG4gWzIzXSBcIk1hbGUgLSBSYXcgVGVlbiAyXCIgICAgICAgICAgICAgICAgICBcIkZlbWFsZSAtIENvbGxlZ2lhdGVcIiAgICAgICAgICAgICAgIFxuIFsyNV0gXCJGZW1hbGUgLSBPcGVuXCIgICAgICAgICAgICAgICAgICAgICAgXCJGZW1hbGUgLSBSYXcgTWFzdGVyIDFcIiAgICAgICAgICAgICBcbiBbMjddIFwiRmVtYWxlIC0gUmF3IE1hc3RlciAyXCIgICAgICAgICAgICAgIFwiRmVtYWxlIC0gUmF3IE1hc3RlciAzXCIgICAgICAgICAgICAgXG4gWzI5XSBcIkZlbWFsZSAtIFJhdyBNYXN0ZXIgNFwiICAgICAgICAgICAgICBcIkZlbWFsZSAtIFJhdyBUZWVuIDNcIiAgICAgICAgICAgICAgIFxuIFszMV0gXCJGZW1hbGUgLSBSYXcgWW91dGggM1wiICAgICAgICAgICAgICAgXCJNYWxlIC0gTWFzdGVyIDJcIiAgICAgICAgICAgICAgICAgICBcbiBbMzNdIFwiTWFsZSAtIE9wZW5cIiAgICAgICAgICAgICAgICAgICAgICAgIFwiTWFsZSAtIFJhdyBNYXN0ZXIgMVwiICAgICAgICAgICAgICAgXG4gWzM1XSBcIk1hbGUgLSBSYXcgTWFzdGVyIDJcIiAgICAgICAgICAgICAgICBcIk1hbGUgLSBSYXcgTWFzdGVyIDNcIiAgICAgICAgICAgICAgIFxuIFszN10gXCJNYWxlIC0gUmF3IE1hc3RlciAyYVwiICAgICAgICAgICAgICAgXCJGZW1hbGUgLSBSYXcgTWFzdGVyIDJhXCIgICAgICAgICAgICBcbiBbMzldIFwiRmVtYWxlIC0gUmF3IE1hc3RlciAyYlwiICAgICAgICAgICAgIFwiRmVtYWxlIC0gUmF3IE1hc3RlciAzYVwiICAgICAgICAgICAgXG4gWzQxXSBcIkZlbWFsZSAtIFJhdyBUZWVuIDJcIiAgICAgICAgICAgICAgICBcIkZlbWFsZSAtIFJhdyBZb3V0aCAxXCIgICAgICAgICAgICAgIFxuIFs0M10gXCJNYWxlIC0gUmF3IHdpdGggV3JhcHMgT3BlblwiICAgICAgICAgXCJGZW1hbGUgLSBSYXcgVGVlbiAxXCIgICAgICAgICAgICAgICBcbiBbNDVdIFwiRmVtYWxlIC0gVGVlbiAzXCIgICAgICAgICAgICAgICAgICAgIFwiTWFsZSAtIEp1bmlvclwiICAgICAgICAgICAgICAgICAgICAgXG4gWzQ3XSBcIk1hbGUgLSBSYXcgTWFzdGVyIDNhXCIgICAgICAgICAgICAgICBcIk1hbGUgLSBSYXcgWW91dGggMlwiICAgICAgICAgICAgICAgIFxuIFs0OV0gXCJNYWxlIC0gVGVlbiAxXCIgICAgICAgICAgICAgICAgICAgICAgXCJNYWxlIC0gVGVlbiAzXCIgICAgICAgICAgICAgICAgICAgICBcbiBbNTFdIFwiTVggLSBSYXcgVGVlbiAyXCIgICAgICAgICAgICAgICAgICAgIFwiRmVtYWxlIC0gR3Vlc3QgTGlmdGVyXCIgICAgICAgICAgICAgXG4gWzUzXSBcIk1hbGUgLSBSLUdcIiAgICAgICAgICAgICAgICAgICAgICAgICBcIkZlbWFsZSAtIFJhdyBNYXN0ZXIgNGFcIiAgICAgICAgICAgIFxuIFs1NV0gXCJNYWxlIC0gUmF3IE1hc3RlciA1XCIgICAgICAgICAgICAgICAgXCJGZW1hbGUgLSBSYXcgU3BlY2lhbCBPbHltcGlhblwiICAgICBcbiBbNTddIFwiTWFsZSAtIFJhdyBNYXN0ZXIgM2JcIiAgICAgICAgICAgICAgIFwiTWFsZSAtIFJhdyBTcGVjaWFsIE9seW1waWFuXCIgICAgICAgXG4gWzU5XSBcIk1hbGUgLSBSYXcgTWFzdGVyIDRiXCIgICAgICAgICAgICAgICBcIkZlbWFsZSAtIE1hc3RlciA0YVwiICAgICAgICAgICAgICAgIFxuIFs2MV0gXCJGZW1hbGUgLSBSYXcgUG9saWNlIGFuZCBGaXJlXCIgICAgICAgXCJNYWxlIC0gUmF3IE1hc3RlciA1YVwiICAgICAgICAgICAgICBcbiBbNjNdIFwiTWFsZSAtIE1hc3RlciAxYVwiICAgICAgICAgICAgICAgICAgIFwiTWFsZSAtIFJhdyBBZGFwdGl2ZSBBdGhsZXRlc1wiICAgICAgXG4gWzY1XSBcIk1hbGUgLSBSYXcgTWFzdGVyIDRhXCIgICAgICAgICAgICAgICBcIk1hbGUgLSBSYXcgd2l0aCBXcmFwcyBKdW5pb3JcIiAgICAgIFxuIFs2N10gXCJNYWxlIC0gTWFzdGVyIDNiXCIgICAgICAgICAgICAgICAgICAgXCJGZW1hbGUgLSBSYXcgWW91dGggMlwiICAgICAgICAgICAgICBcbiBbNjldIFwiTWFsZSAtIE1hc3RlclwiICAgICAgICAgICAgICAgICAgICAgIFwiTWFsZSAtIFJhdyBNYXN0ZXJcIiAgICAgICAgICAgICAgICAgXG4gWzcxXSBcIk1hbGUgLSBSYXcgWW91dGggMVwiICAgICAgICAgICAgICAgICBcIk1hbGUgLSBSYXcgTWFzdGVyIDRcIiAgICAgICAgICAgICAgIFxuIFs3M10gXCJGZW1hbGUgLSBSYXcgTWFzdGVyIDNiXCIgICAgICAgICAgICAgXCJGZW1hbGUgLSBSYXcgTWFzdGVyIDVcIiAgICAgICAgICAgICBcbiBbNzVdIFwiRmVtYWxlIC0gUmF3IE1hc3RlciA1YVwiICAgICAgICAgICAgIFwiRmVtYWxlIC0gUmF3IHdpdGggV3JhcHMgTWFzdGVyIDNcIiAgXG4gWzc3XSBcIk1hbGUgLSBNYXN0ZXIgNFwiICAgICAgICAgICAgICAgICAgICBcIk1hbGUgLSBSYXcgd2l0aCBXcmFwcyBNYXN0ZXIgMVwiICAgIFxuIFs3OV0gXCJNYWxlIC0gUmF3IHdpdGggV3JhcHMgTWFzdGVyIDRcIiAgICAgXCJNYWxlIC0gUmF3IHdpdGggV3JhcHMgVGVlbiAzXCIgICAgICBcbiBbODFdIFwiTVggLSBSYXcgT3BlblwiICAgICAgICAgICAgICAgICAgICAgIFwiTWFsZSAtIE1hc3RlciAyYVwiICAgICAgICAgICAgICAgICAgXG4gWzgzXSBcIkZlbWFsZSAtIFJhdyBUZWVuXCIgICAgICAgICAgICAgICAgICBcIkZlbWFsZSAtIFJhdyBZb3V0aFwiICAgICAgICAgICAgICAgIFxuIFs4NV0gXCJGZW1hbGUgLSBUZWVuIDFcIiAgICAgICAgICAgICAgICAgICAgXCJGZW1hbGUgLSBUZWVuIDJcIiAgICAgICAgICAgICAgICAgICBcbiBbODddIFwiTWFsZSAtIFRlZW4gMlwiICAgICAgICAgICAgICAgICAgICAgIFwiRmVtYWxlIC0gSnVuaW9yXCIgICAgICAgICAgICAgICAgICAgXG4gWzg5XSBcIk1hbGUgLSBNYXN0ZXIgNGFcIiAgICAgICAgICAgICAgICAgICBcIk1hbGUgLSBHdWVzdCBMaWZ0ZXJcIiAgICAgICAgICAgICAgIFxuIFs5MV0gXCJNYWxlIC0gTWFzdGVyIDNhXCIgICAgICAgICAgICAgICAgICAgXCJNYWxlIC0gUmF3IE1hc3RlciA1YlwiICAgICAgICAgICAgICBcbiBbOTNdIFwiRmVtYWxlIC0gTWFzdGVyIDJiXCIgICAgICAgICAgICAgICAgIFwiRmVtYWxlIC0gUmF3IE1hc3RlciA0YlwiICAgICAgICAgICAgXG4gWzk1XSBcIkZlbWFsZSAtIFJhdyBNaWxpdGFyeSBPcGVuXCIgICAgICAgICBcIkZlbWFsZSAtIFJhdyB3aXRoIFdyYXBzIE9wZW5cIiAgICAgIFxuIFs5N10gXCJNWCAtIFJhdyBKdW5pb3JcIiAgICAgICAgICAgICAgICAgICAgXCJNYWxlIC0gUmF3IFlvdXRoXCIgICAgICAgICAgICAgICAgICBcbiBbOTldIFwiRmVtYWxlIC0gUmF3IEhpZ2ggU2Nob29sIEpWXCIgICAgICAgIFwiRmVtYWxlIC0gUmF3IEhpZ2ggU2Nob29sIFZhcnNpdHlcIiAgXG5bMTAxXSBcIk1hbGUgLSBSYXcgSGlnaCBTY2hvb2wgSlZcIiAgICAgICAgICBcIk1hbGUgLSBSYXcgSGlnaCBTY2hvb2wgVmFyc2l0eVwiICAgIFxuWzEwM10gXCJNWCAtIFJhdyBIaWdoIFNjaG9vbCBKVlwiICAgICAgICAgICAgXCJGZW1hbGUgLSBIaWdoIFNjaG9vbFwiICAgICAgICAgICAgICBcblsxMDVdIFwiRmVtYWxlIC0gUmF3IEhpZ2ggU2Nob29sXCIgICAgICAgICAgIFwiTWFsZSAtIEhpZ2ggU2Nob29sXCIgICAgICAgICAgICAgICAgXG5bMTA3XSBcIk1hbGUgLSBSYXcgSGlnaCBTY2hvb2xcIiAgICAgICAgICAgICBcIk1hbGUgLSBNYXN0ZXIgMWJcIiAgICAgICAgICAgICAgICAgIFxuWzEwOV0gXCJNYWxlIC0gTWFzdGVyIDNcIiAgICAgICAgICAgICAgICAgICAgXCJNYWxlIC0gUmF3IFBhcmFCZW5jaFwiICAgICAgICAgICAgICBcblsxMTFdIFwiTWFsZSAtIFRlZW5cIiAgICAgICAgICAgICAgICAgICAgICAgIFwiTWFsZSAtIFItSFwiICAgICAgICAgICAgICAgICAgICAgICAgXG5bMTEzXSBcIkZlbWFsZSAtIE1hc3RlclwiICAgICAgICAgICAgICAgICAgICBcIk1hbGUgLSBDb2xsZWdpYXRlXCIgICAgICAgICAgICAgICAgIFxuWzExNV0gXCJGZW1hbGUgLSBSLUhcIiAgICAgICAgICAgICAgICAgICAgICAgXCJNYWxlIC0gT1NPXCIgICAgICAgICAgICAgICAgICAgICAgICBcblsxMTddIFwiTWFsZSAtIFItT1NPXCIgICAgICAgICAgICAgICAgICAgICAgIFwiRmVtYWxlIC0gTWFzdGVyIDFhXCIgICAgICAgICAgICAgICAgXG5bMTE5XSBcIk1hbGUgLSBSYXcgd2l0aCBXcmFwcyBNYXN0ZXIgMmFcIiAgICBcIk1hbGUgLSBSYXcgd2l0aCBXcmFwcyBNYXN0ZXIgM1wiICAgIFxuWzEyMV0gXCJNYWxlIC0gTWFzdGVyIDJiXCIgICAgICAgICAgICAgICAgICAgXCJNYWxlIC0gTWFzdGVyIDVcIiAgICAgICAgICAgICAgICAgICBcblsxMjNdIFwiRmVtYWxlIC0gUmF3IHdpdGggV3JhcHMgTWFzdGVyIDNhXCIgIFwiRmVtYWxlIC0gTWlsaXRhcnkgT3BlblwiICAgICAgICAgICAgXG5bMTI1XSBcIk1hbGUgLSBNaWxpdGFyeSBPcGVuXCIgICAgICAgICAgICAgICBcIk1hbGUgLSBSYXcgTWlsaXRhcnkgT3BlblwiICAgICAgICAgIFxuWzEyN10gXCJGZW1hbGUgLSBNYXN0ZXIgMlwiICAgICAgICAgICAgICAgICAgXCJGZW1hbGUgLSBSYXcgd2l0aCBXcmFwcyBKdW5pb3JcIiAgICBcblsxMjldIFwiRmVtYWxlIC0gTWFzdGVyIDFcIiAgICAgICAgICAgICAgICAgIFwiRmVtYWxlIC0gTWFzdGVyIDNcIiAgICAgICAgICAgICAgICAgXG5bMTMxXSBcIk1hbGUgLSBNYXN0ZXIgMVwiICAgICAgICAgICAgICAgICAgICBcIkZlbWFsZSAtIFJhdyBBZGFwdGl2ZSBBdGhsZXRlc1wiICAgIFxuWzEzM10gXCJGZW1hbGUgLSBUZWVuXCIgICAgICAgICAgICAgICAgICAgICAgXCJGZW1hbGUgLSBIaWdoIFNjaG9vbCBKVlwiICAgICAgICAgICBcblsxMzVdIFwiRmVtYWxlIC0gSGlnaCBTY2hvb2wgVmFyc2l0eVwiICAgICAgIFwiTWFsZSAtIEhpZ2ggU2Nob29sIEpWXCIgICAgICAgICAgICAgXG5bMTM3XSBcIk1hbGUgLSBIaWdoIFNjaG9vbCBWYXJzaXR5XCIgICAgICAgICBcIkZlbWFsZSAtIFItT1NPXCIgICAgICAgICAgICAgICAgICAgIFxuWzEzOV0gXCJNYWxlIC0gUmF3IHdpdGggV3JhcHMgVGVlbiAxXCIgICAgICAgXCJGZW1hbGUgLSBIXCIgICAgICAgICAgICAgICAgICAgICAgICBcblsxNDFdIFwiRmVtYWxlIC0gUmF3IHdpdGggV3JhcHMgVGVlblwiICAgICAgIFwiTWFsZSAtIFJhdyB3aXRoIFdyYXBzIFRlZW4gMlwiICAgICAgXG5bMTQzXSBcIkZlbWFsZSAtIE1hc3RlciAzYlwiICAgICAgICAgICAgICAgICBcIk1hbGUgLSBSYXcgT3BlbiBNYXNzYWNodXNldHRzXCIgICAgIFxuWzE0NV0gXCJGZW1hbGUgLSBSLUpyLU1BXCIgICAgICAgICAgICAgICAgICAgXCJGZW1hbGUgLSBSLUpyLVJJXCIgICAgICAgICAgICAgICAgICBcblsxNDddIFwiRmVtYWxlIC0gUi1ULU1BXCIgICAgICAgICAgICAgICAgICAgIFwiRmVtYWxlIC0gUmF3IE9wZW4gTWFzc2FjaHVzZXR0c1wiICAgXG5bMTQ5XSBcIkZlbWFsZSAtIFJhdyBPcGVuIFJob2RlIElzbGFuZFwiICAgICBcIk1hbGUgLSBPLVJJXCIgICAgICAgICAgICAgICAgICAgICAgIFxuWzE1MV0gXCJNYWxlIC0gUi1Kci1NQVwiICAgICAgICAgICAgICAgICAgICAgXCJNYWxlIC0gUi1Kci1SSVwiICAgICAgICAgICAgICAgICAgICBcblsxNTNdIFwiTWFsZSAtIFJhdyBPcGVuIFJob2RlIElzbGFuZFwiICAgICAgIFwiRmVtYWxlIC0gUmF3IHdpdGggV3JhcHMgTWFzdGVyXCIgICAgXG5bMTU1XSBcIk1hbGUgLSBSYXcgd2l0aCBXcmFwcyBUZWVuXCIgICAgICAgICBcIk1hbGUgLSBSYXcgd2l0aCBXcmFwcyBNYXN0ZXIgMlwiICAgIFxuWzE1N10gXCJNYWxlIC0gUi1ETFwiICAgICAgICAgICAgICAgICAgICAgICAgXCJNWCAtIFRlZW4gMVwiICAgICAgICAgICAgICAgICAgICAgICBcblsxNTldIFwiSnVuaW9yXCIgICAgICAgICAgICAgICAgICAgICAgICAgICAgIFwiT3BlblwiICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXG5bMTYxXSBcIlJhdyBNYXN0ZXJcIiAgICAgICAgICAgICAgICAgICAgICAgICBcIlJhdyBPcGVuXCIgICAgICAgICAgICAgICAgICAgICAgICAgIFxuWzE2M10gXCJGZW1hbGUgLSBNYXN0ZXIgNGJcIiAgICAgICAgICAgICAgICAgXCJSYXcgSnVuaW9yXCIgICAgICAgICAgICAgICAgICAgICAgICBcblsxNjVdIFwiUmF3IFRlZW4gM1wiICAgICAgICAgICAgICAgICAgICAgICAgIFwiTWFsZSAtIE1hc3RlciA0YlwiICAgICAgICAgICAgICAgICAgXG5bMTY3XSBcIkZlbWFsZSAtIFJhdyBTdWIgSnVuaW9yXCIgICAgICAgICAgICBcIk1hbGUgLSBSYXcgU3ViIEp1bmlvclwiICAgICAgICAgICAgIFxuWzE2OV0gXCJGZW1hbGUgLSBSYXcgVGVlbiBhbmQgSnVuaW9yXCIgICAgICAgXCJNYWxlIC0gUmF3IFRlZW4gYW5kIEp1bmlvclwiICAgICAgICBcblsxNzFdIFwiTWFsZSAtIFNwZWNpYWwgT2x5bXBpYW5cIiAgICAgICAgICAgIFwiRmVtYWxlIC0gUi1NT1wiICAgICAgICAgICAgICAgICAgICAgXG5bMTczXSBcIk1hbGUgLSBSLU1PXCIgICAgICAgICAgICAgICAgICAgICAgICBcIk1hbGUgLSBIXCIgICAgICAgICAgICAgICAgICAgICAgICAgIFxuWzE3NV0gXCJSYXcgTWFzdGVyIDFhXCIgICAgICAgICAgICAgICAgICAgICAgXCJSYXcgTWFzdGVyIDFiXCIgICAgICAgICAgICAgICAgICAgICBcblsxNzddIFwiUmF3IE1hc3RlciAyYlwiICAgICAgICAgICAgICAgICAgICAgIFwiUmF3IE1hc3RlciAzYVwiICAgICAgICAgICAgICAgICAgICAgXG5bMTc5XSBcIlJhdyBNYXN0ZXIgM2JcIiAgICAgICAgICAgICAgICAgICAgICBcIlJhdyBUZWVuIDFcIiAgICAgICAgICAgICAgICAgICAgICAgIFxuWzE4MV0gXCJSYXcgVGVlbiAyXCIgICAgICAgICAgICAgICAgICAgICAgICAgXCJNYWxlIC0gUi1KUkdcIiAgICAgICAgICAgICAgICAgICAgICBcblsxODNdIFwiTWFsZSAtIFItT0dcIiAgICAgICAgICAgICAgICAgICAgICAgIFwiRmVtYWxlIC0gTWFzdGVyIDRcIiAgICAgICAgICAgICAgICAgXG5bMTg1XSBcIkZlbWFsZSAtIE1hc3RlciAxYlwiICAgICAgICAgICAgICAgICBcIkZlbWFsZSAtIFItU0pyXCIgICAgICAgICAgICAgICAgICAgIFxuWzE4N10gXCJNYWxlIC0gTWFzdGVyIDVhXCIgICAgICAgICAgICAgICAgICAgXCJNYWxlIC0gUi1TSnJcIiAgICAgICAgICAgICAgICAgICAgICBcblsxODldIFwiTWFsZSAtIFItXCIgICAgICAgICAgICAgICAgICAgICAgICAgIFwiRmVtYWxlIC0gUi1QUFwiICAgICAgICAgICAgICAgICAgICAgXG5bMTkxXSBcIk1hbGUgLSBSLVBQXCIgICAgICAgICAgICAgICAgICAgICAgICBcIk1hbGUgLSBZb3V0aFwiICAgICAgICAgICAgICAgICAgICAgIFxuWzE5M10gXCJGZW1hbGUgLSBSLU9HXCIgICAgICAgICAgICAgICAgICAgICAgXCJGZW1hbGUgLSBTcGVjaWFsIE9seW1waWFuXCIgICAgICAgICBcblsxOTVdIFwiRmVtYWxlIC0gTWFzdGVyIDNhXCIgICAgICAgICAgICAgICAgIFwiRmVtYWxlIC0gK0M0OC1KclwiICAgICAgICAgICAgICAgICAgXG5bMTk3XSBcIkZlbWFsZSAtIFItXCIgICAgICAgICAgICAgICAgICAgICAgICBcIkZlbWFsZSAtIFItT1BCXCIgICAgICAgICAgICAgICAgICAgIFxuWzE5OV0gXCJNYWxlIC0gUi1PUEJcIiAgICAgICAgICAgICAgICAgICAgICAgXCJGZW1hbGUgLSBHTFwiICAgICAgICAgICAgICAgICAgICAgICBcblsyMDFdIFwiRmVtYWxlIC0gUi1NMkhXXCIgICAgICAgICAgICAgICAgICAgIFwiRmVtYWxlIC0gUi1NMkxXXCIgICAgICAgICAgICAgICAgICAgXG5bMjAzXSBcIk1hbGUgLSBSLUdMXCIgICAgICAgICAgICAgICAgICAgICAgICBcIk1hbGUgLSBSLU1IV1wiICAgICAgICAgICAgICAgICAgICAgIFxuWzIwNV0gXCJNYWxlIC0gUi1NTFdcIiAgICAgICAgICAgICAgICAgICAgICAgXCJNYWxlIC0gUi1USFdcIiAgICAgICAgICAgICAgICAgICAgICBcblsyMDddIFwiRmVtYWxlIC0gUi1HVDNcIiAgICAgICAgICAgICAgICAgICAgIFwiTWFsZSAtIEdNMmJcIiAgICAgICAgICAgICAgICAgICAgICAgXG5bMjA5XSBcIk1hbGUgLSBSLUdUMlwiICAgICAgICAgICAgICAgICAgICAgICBcIk1hbGUgLSBSLUdNMmFcIiAgICAgICAgICAgICAgICAgICAgIFxuWzIxMV0gXCJNYWxlIC0gUi1HT1wiICAgICAgICAgICAgICAgICAgICAgICAgXCJSYXcgVGVlblwiICAgICAgICAgICAgICAgICAgICAgICAgICBcblsyMTNdIFwiTWFsZSAtIE9HXCIgICAgICAgICAgICAgICAgICAgICAgICAgIFwiTWFsZSAtIFItWUdcIiAgICAgICAgICAgICAgICAgICAgICAgXG5bMjE1XSBcIk1hbGUgLSBHTFwiICAgICAgICAgICAgICAgICAgICAgICAgICBcIkZlbWFsZSAtIFlvdXRoXCIgICAgICAgICAgICAgICAgICAgIFxuWzIxN10gXCJNYWxlIC0gUi1NNS1HXCIgICAgICAgICAgICAgICAgICAgICAgXCJGZW1hbGUgLSBSLUdcIiAgICAgICAgICAgICAgICAgICAgICBcblsyMTldIFwiRmVtYWxlIC0gUi1USlwiICAgICAgICAgICAgICAgICAgICAgIFwiTWFsZSAtIEdcIiAgICAgICAgICAgICAgICAgICAgICAgICAgXG5bMjIxXSBcIk1hbGUgLSBSLVRKXCIgICAgICAgICAgICAgICAgICAgICAgICBcIkZlbWFsZSAtXCIgICAgICAgICAgICAgICAgICAgICAgICAgIFxuWzIyM10gXCJGZW1hbGUgLSBSLU0xYS1CXCIgICAgICAgICAgICAgICAgICAgXCJGZW1hbGUgLSBSLU8tQlwiICAgICAgICAgICAgICAgICAgICBcblsyMjVdIFwiTWFsZSAtIFItTTJiLUJcIiAgICAgICAgICAgICAgICAgICAgIFwiTWFsZSAtIFItTTNiLUJcIiAgICAgICAgICAgICAgICAgICAgXG5bMjI3XSBcIk1hbGUgLSBSLU1pbC1CXCIgICAgICAgICAgICAgICAgICAgICBcIk1hbGUgLSBSLU8tQlwiICAgICAgICAgICAgICAgICAgICAgIFxuWzIyOV0gXCJGZW1hbGUgLSBSLU8tUFBcIiAgICAgICAgICAgICAgICAgICAgXCJNYWxlIC0gUi1Kci1QUFwiICAgICAgICAgICAgICAgICAgICBcblsyMzFdIFwiRmVtYWxlIC0gTWFzdGVyIDJhXCIgICAgICAgICAgICAgICAgIFwiRmVtYWxlIC0gUi1HTFwiICAgICAgICAgICAgICAgICAgICAgXG5bMjMzXSBcIk1hbGUgLSBSLU1NXCIgICAgICAgICAgICAgICAgICAgICAgICBcIk1hbGUgLSBSLVZcIiAgICAgICAgICAgICAgICAgICAgICAgIFxuWzIzNV0gXCJGZW1hbGUgLSBSLVZcIiAgICAgICAgICAgICAgICAgICAgICAgXCJNYWxlIC0gUi1NMWItR0xcIiAgICAgICAgICAgICAgICAgICBcblsyMzddIFwiTWFsZSAtIFItVDMtR0xcIiAgICAgICAgICAgICAgICAgICAgIFwiTWFsZSAtIFItSnItR0xcIiAgICAgICAgICAgICAgICAgICAgXG5bMjM5XSBcIk1hbGUgLSBSLU8tR0xcIiAgICAgICAgICAgICAgICAgICAgICBcIkZlbWFsZSAtIFItT1BQQlBcIiAgICAgICAgICAgICAgICAgIFxuWzI0MV0gXCJNYWxlIC0gTWlsXCIgICAgICAgICAgICAgICAgICAgICAgICAgXCJNYWxlIC0gUi1NQlBcIiAgICAgICAgICAgICAgICAgICAgICBcblsyNDNdIFwiTWFsZSAtIFItT1BQQlBcIiAgICAgICAgICAgICAgICAgICAgIFwiTWFsZSAtIFItTTIrXCIgICAgICAgICAgICAgICAgICAgICAgXG5bMjQ1XSBcIkZlbWFsZSAtIEdcIiAgICAgICAgICAgICAgICAgICAgICAgICBcIkZlbWFsZSAtIFItTUxcIiAgICAgICAgICAgICAgICAgICAgIFxuWzI0N10gXCJNYWxlIC0gUi1NTFwiICAgICAgICAgICAgICAgICAgICAgICAgXCJGZW1hbGUgLSBYXCIgICAgICAgICAgICAgICAgICAgICAgICBcblsyNDldIFwiTWFsZSAtIFNKclwiICAgICAgICAgICAgICAgICAgICAgICAgIFwiTWFsZSAtIFItUEZPXCIgICAgICAgICAgICAgICAgICAgICAgXG5bMjUxXSBcIk1hbGUgLSBSLU1KclwiICAgICAgICAgICAgICAgICAgICAgICBcIk1hbGUgLSBSLU1NMWFcIiAgICAgICAgICAgICAgICAgICAgIFxuWzI1M10gXCJNYWxlIC0gUi1NTTFiXCIgICAgICAgICAgICAgICAgICAgICAgXCJNYWxlIC0gUi1PQlBQUFwiICAgICAgICAgICAgICAgICAgICBcblsyNTVdIFwiRmVtYWxlIC0gUi1USFdcIiAgICAgICAgICAgICAgICAgICAgIFwiRmVtYWxlIC0gUi1PUFBcIiAgICAgICAgICAgICAgICAgICAgXG5bMjU3XSBcIkZlbWFsZSAtIFItRlIvU09cIiAgICAgICAgICAgICAgICAgICBcIkZlbWFsZSAtIFItSlIvU1JcIiAgICAgICAgICAgICAgICAgIFxuWzI1OV0gXCJNYWxlIC0gUi1GUi9TT1wiICAgICAgICAgICAgICAgICAgICAgXCJNYWxlIC0gUi1GUi9Tb1wiICAgICAgICAgICAgICAgICAgICBcblsyNjFdIFwiTWFsZSAtIFItSlIvU1JcIiAgICAgICAgICAgICAgICAgICAgXG4ifQ== -->
-<pre><code>  [1] &quot;Female&quot;                             &quot;Male&quot;                              
-  [3] &quot;Female - Raw Guest Lifter&quot;          &quot;Female - Raw Junior&quot;               
-  [5] &quot;Female - Raw Master&quot;                &quot;Female - Raw Open&quot;                 
-  [7] &quot;Male - Raw Guest Lifter&quot;            &quot;Male - Raw Open&quot;                   
-  [9] &quot;Male - Raw Teen&quot;                    &quot;Male - Raw with Wraps Guest Lifter&quot;
- [11] &quot;Female - Raw Collegiate&quot;            &quot;Male - Raw Collegiate&quot;             
- [13] &quot;Male - Raw Youth 3&quot;                 &quot;Female - Raw Master 1a&quot;            
- [15] &quot;Female - Raw Master 1b&quot;             &quot;Male - Raw Master 1a&quot;              
- [17] &quot;Male - Raw Master 2b&quot;               &quot;Male - Raw Teen 3&quot;                 
- [19] &quot;Male - Raw Junior&quot;                  &quot;Male - Raw Master 1b&quot;              
- [21] &quot;Male - Raw Police and Fire&quot;         &quot;Male - Raw Teen 1&quot;                 
- [23] &quot;Male - Raw Teen 2&quot;                  &quot;Female - Collegiate&quot;               
- [25] &quot;Female - Open&quot;                      &quot;Female - Raw Master 1&quot;             
- [27] &quot;Female - Raw Master 2&quot;              &quot;Female - Raw Master 3&quot;             
- [29] &quot;Female - Raw Master 4&quot;              &quot;Female - Raw Teen 3&quot;               
- [31] &quot;Female - Raw Youth 3&quot;               &quot;Male - Master 2&quot;                   
- [33] &quot;Male - Open&quot;                        &quot;Male - Raw Master 1&quot;               
- [35] &quot;Male - Raw Master 2&quot;                &quot;Male - Raw Master 3&quot;               
- [37] &quot;Male - Raw Master 2a&quot;               &quot;Female - Raw Master 2a&quot;            
- [39] &quot;Female - Raw Master 2b&quot;             &quot;Female - Raw Master 3a&quot;            
- [41] &quot;Female - Raw Teen 2&quot;                &quot;Female - Raw Youth 1&quot;              
- [43] &quot;Male - Raw with Wraps Open&quot;         &quot;Female - Raw Teen 1&quot;               
- [45] &quot;Female - Teen 3&quot;                    &quot;Male - Junior&quot;                     
- [47] &quot;Male - Raw Master 3a&quot;               &quot;Male - Raw Youth 2&quot;                
- [49] &quot;Male - Teen 1&quot;                      &quot;Male - Teen 3&quot;                     
- [51] &quot;MX - Raw Teen 2&quot;                    &quot;Female - Guest Lifter&quot;             
- [53] &quot;Male - R-G&quot;                         &quot;Female - Raw Master 4a&quot;            
- [55] &quot;Male - Raw Master 5&quot;                &quot;Female - Raw Special Olympian&quot;     
- [57] &quot;Male - Raw Master 3b&quot;               &quot;Male - Raw Special Olympian&quot;       
- [59] &quot;Male - Raw Master 4b&quot;               &quot;Female - Master 4a&quot;                
- [61] &quot;Female - Raw Police and Fire&quot;       &quot;Male - Raw Master 5a&quot;              
- [63] &quot;Male - Master 1a&quot;                   &quot;Male - Raw Adaptive Athletes&quot;      
- [65] &quot;Male - Raw Master 4a&quot;               &quot;Male - Raw with Wraps Junior&quot;      
- [67] &quot;Male - Master 3b&quot;                   &quot;Female - Raw Youth 2&quot;              
- [69] &quot;Male - Master&quot;                      &quot;Male - Raw Master&quot;                 
- [71] &quot;Male - Raw Youth 1&quot;                 &quot;Male - Raw Master 4&quot;               
- [73] &quot;Female - Raw Master 3b&quot;             &quot;Female - Raw Master 5&quot;             
- [75] &quot;Female - Raw Master 5a&quot;             &quot;Female - Raw with Wraps Master 3&quot;  
- [77] &quot;Male - Master 4&quot;                    &quot;Male - Raw with Wraps Master 1&quot;    
- [79] &quot;Male - Raw with Wraps Master 4&quot;     &quot;Male - Raw with Wraps Teen 3&quot;      
- [81] &quot;MX - Raw Open&quot;                      &quot;Male - Master 2a&quot;                  
- [83] &quot;Female - Raw Teen&quot;                  &quot;Female - Raw Youth&quot;                
- [85] &quot;Female - Teen 1&quot;                    &quot;Female - Teen 2&quot;                   
- [87] &quot;Male - Teen 2&quot;                      &quot;Female - Junior&quot;                   
- [89] &quot;Male - Master 4a&quot;                   &quot;Male - Guest Lifter&quot;               
- [91] &quot;Male - Master 3a&quot;                   &quot;Male - Raw Master 5b&quot;              
- [93] &quot;Female - Master 2b&quot;                 &quot;Female - Raw Master 4b&quot;            
- [95] &quot;Female - Raw Military Open&quot;         &quot;Female - Raw with Wraps Open&quot;      
- [97] &quot;MX - Raw Junior&quot;                    &quot;Male - Raw Youth&quot;                  
- [99] &quot;Female - Raw High School JV&quot;        &quot;Female - Raw High School Varsity&quot;  
-[101] &quot;Male - Raw High School JV&quot;          &quot;Male - Raw High School Varsity&quot;    
-[103] &quot;MX - Raw High School JV&quot;            &quot;Female - High School&quot;              
-[105] &quot;Female - Raw High School&quot;           &quot;Male - High School&quot;                
-[107] &quot;Male - Raw High School&quot;             &quot;Male - Master 1b&quot;                  
-[109] &quot;Male - Master 3&quot;                    &quot;Male - Raw ParaBench&quot;              
-[111] &quot;Male - Teen&quot;                        &quot;Male - R-H&quot;                        
-[113] &quot;Female - Master&quot;                    &quot;Male - Collegiate&quot;                 
-[115] &quot;Female - R-H&quot;                       &quot;Male - OSO&quot;                        
-[117] &quot;Male - R-OSO&quot;                       &quot;Female - Master 1a&quot;                
-[119] &quot;Male - Raw with Wraps Master 2a&quot;    &quot;Male - Raw with Wraps Master 3&quot;    
-[121] &quot;Male - Master 2b&quot;                   &quot;Male - Master 5&quot;                   
-[123] &quot;Female - Raw with Wraps Master 3a&quot;  &quot;Female - Military Open&quot;            
-[125] &quot;Male - Military Open&quot;               &quot;Male - Raw Military Open&quot;          
-[127] &quot;Female - Master 2&quot;                  &quot;Female - Raw with Wraps Junior&quot;    
-[129] &quot;Female - Master 1&quot;                  &quot;Female - Master 3&quot;                 
-[131] &quot;Male - Master 1&quot;                    &quot;Female - Raw Adaptive Athletes&quot;    
-[133] &quot;Female - Teen&quot;                      &quot;Female - High School JV&quot;           
-[135] &quot;Female - High School Varsity&quot;       &quot;Male - High School JV&quot;             
-[137] &quot;Male - High School Varsity&quot;         &quot;Female - R-OSO&quot;                    
-[139] &quot;Male - Raw with Wraps Teen 1&quot;       &quot;Female - H&quot;                        
-[141] &quot;Female - Raw with Wraps Teen&quot;       &quot;Male - Raw with Wraps Teen 2&quot;      
-[143] &quot;Female - Master 3b&quot;                 &quot;Male - Raw Open Massachusetts&quot;     
-[145] &quot;Female - R-Jr-MA&quot;                   &quot;Female - R-Jr-RI&quot;                  
-[147] &quot;Female - R-T-MA&quot;                    &quot;Female - Raw Open Massachusetts&quot;   
-[149] &quot;Female - Raw Open Rhode Island&quot;     &quot;Male - O-RI&quot;                       
-[151] &quot;Male - R-Jr-MA&quot;                     &quot;Male - R-Jr-RI&quot;                    
-[153] &quot;Male - Raw Open Rhode Island&quot;       &quot;Female - Raw with Wraps Master&quot;    
-[155] &quot;Male - Raw with Wraps Teen&quot;         &quot;Male - Raw with Wraps Master 2&quot;    
-[157] &quot;Male - R-DL&quot;                        &quot;MX - Teen 1&quot;                       
-[159] &quot;Junior&quot;                             &quot;Open&quot;                              
-[161] &quot;Raw Master&quot;                         &quot;Raw Open&quot;                          
-[163] &quot;Female - Master 4b&quot;                 &quot;Raw Junior&quot;                        
-[165] &quot;Raw Teen 3&quot;                         &quot;Male - Master 4b&quot;                  
-[167] &quot;Female - Raw Sub Junior&quot;            &quot;Male - Raw Sub Junior&quot;             
-[169] &quot;Female - Raw Teen and Junior&quot;       &quot;Male - Raw Teen and Junior&quot;        
-[171] &quot;Male - Special Olympian&quot;            &quot;Female - R-MO&quot;                     
-[173] &quot;Male - R-MO&quot;                        &quot;Male - H&quot;                          
-[175] &quot;Raw Master 1a&quot;                      &quot;Raw Master 1b&quot;                     
-[177] &quot;Raw Master 2b&quot;                      &quot;Raw Master 3a&quot;                     
-[179] &quot;Raw Master 3b&quot;                      &quot;Raw Teen 1&quot;                        
-[181] &quot;Raw Teen 2&quot;                         &quot;Male - R-JRG&quot;                      
-[183] &quot;Male - R-OG&quot;                        &quot;Female - Master 4&quot;                 
-[185] &quot;Female - Master 1b&quot;                 &quot;Female - R-SJr&quot;                    
-[187] &quot;Male - Master 5a&quot;                   &quot;Male - R-SJr&quot;                      
-[189] &quot;Male - R-&quot;                          &quot;Female - R-PP&quot;                     
-[191] &quot;Male - R-PP&quot;                        &quot;Male - Youth&quot;                      
-[193] &quot;Female - R-OG&quot;                      &quot;Female - Special Olympian&quot;         
-[195] &quot;Female - Master 3a&quot;                 &quot;Female - +C48-Jr&quot;                  
-[197] &quot;Female - R-&quot;                        &quot;Female - R-OPB&quot;                    
-[199] &quot;Male - R-OPB&quot;                       &quot;Female - GL&quot;                       
-[201] &quot;Female - R-M2HW&quot;                    &quot;Female - R-M2LW&quot;                   
-[203] &quot;Male - R-GL&quot;                        &quot;Male - R-MHW&quot;                      
-[205] &quot;Male - R-MLW&quot;                       &quot;Male - R-THW&quot;                      
-[207] &quot;Female - R-GT3&quot;                     &quot;Male - GM2b&quot;                       
-[209] &quot;Male - R-GT2&quot;                       &quot;Male - R-GM2a&quot;                     
-[211] &quot;Male - R-GO&quot;                        &quot;Raw Teen&quot;                          
-[213] &quot;Male - OG&quot;                          &quot;Male - R-YG&quot;                       
-[215] &quot;Male - GL&quot;                          &quot;Female - Youth&quot;                    
-[217] &quot;Male - R-M5-G&quot;                      &quot;Female - R-G&quot;                      
-[219] &quot;Female - R-TJ&quot;                      &quot;Male - G&quot;                          
-[221] &quot;Male - R-TJ&quot;                        &quot;Female -&quot;                          
-[223] &quot;Female - R-M1a-B&quot;                   &quot;Female - R-O-B&quot;                    
-[225] &quot;Male - R-M2b-B&quot;                     &quot;Male - R-M3b-B&quot;                    
-[227] &quot;Male - R-Mil-B&quot;                     &quot;Male - R-O-B&quot;                      
-[229] &quot;Female - R-O-PP&quot;                    &quot;Male - R-Jr-PP&quot;                    
-[231] &quot;Female - Master 2a&quot;                 &quot;Female - R-GL&quot;                     
-[233] &quot;Male - R-MM&quot;                        &quot;Male - R-V&quot;                        
-[235] &quot;Female - R-V&quot;                       &quot;Male - R-M1b-GL&quot;                   
-[237] &quot;Male - R-T3-GL&quot;                     &quot;Male - R-Jr-GL&quot;                    
-[239] &quot;Male - R-O-GL&quot;                      &quot;Female - R-OPPBP&quot;                  
-[241] &quot;Male - Mil&quot;                         &quot;Male - R-MBP&quot;                      
-[243] &quot;Male - R-OPPBP&quot;                     &quot;Male - R-M2+&quot;                      
-[245] &quot;Female - G&quot;                         &quot;Female - R-ML&quot;                     
-[247] &quot;Male - R-ML&quot;                        &quot;Female - X&quot;                        
-[249] &quot;Male - SJr&quot;                         &quot;Male - R-PFO&quot;                      
-[251] &quot;Male - R-MJr&quot;                       &quot;Male - R-MM1a&quot;                     
-[253] &quot;Male - R-MM1b&quot;                      &quot;Male - R-OBPPP&quot;                    
-[255] &quot;Female - R-THW&quot;                     &quot;Female - R-OPP&quot;                    
-[257] &quot;Female - R-FR/SO&quot;                   &quot;Female - R-JR/SR&quot;                  
-[259] &quot;Male - R-FR/SO&quot;                     &quot;Male - R-FR/So&quot;                    
-[261] &quot;Male - R-JR/SR&quot;                    </code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDM4NVxuIn0= -->
+<pre><code>[1] 385</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGVuZ3RoKHVuaXF1ZShjb21wX3R5cGVzJGBTYW5jdGlvbiBOdW1iZXJgKSlcbmBgYCJ9 -->
+<pre class="r"><code>length(unique(comp_types$`Sanction Number`))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIDMwNjJcbiJ9 -->
+<pre><code>[1] 3062</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuKHVuaXF1ZShjb21wX3R5cGVzJGBNZWV0IFR5cGVgKSlcbmBgYCJ9 -->
+<pre class="r"><code>(unique(comp_types$`Meet Type`))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiSVBGXCIgICAgICAgIFwiTG9jYWxcIiAgICAgIFwiTkFQRlwiICAgICAgIFwiTmF0aW9uYWxcIiAgIFwiUHJvIE1lZXRcIiAgIFwiUHJvIFNlcmllc1wiIFwiUmVnaW9uYWxcIiAgIFwiU3RhdGVcIiAgICAgXG4ifQ== -->
+<pre><code>[1] &quot;IPF&quot;        &quot;Local&quot;      &quot;NAPF&quot;       &quot;National&quot;   &quot;Pro Meet&quot;   &quot;Pro Series&quot; &quot;Regional&quot;   &quot;State&quot;     </code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuKHVuaXF1ZShjb21wX3R5cGVzJGBNZWV0IFR5cGVgKSlcbmBgYCJ9 -->
+<pre class="r"><code>(unique(comp_types$`Meet Type`))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiSVBGXCIgICAgICAgIFwiTG9jYWxcIiAgICAgIFwiTkFQRlwiICAgICAgIFwiTmF0aW9uYWxcIiAgIFwiUHJvIE1lZXRcIiAgIFwiUHJvIFNlcmllc1wiIFwiUmVnaW9uYWxcIiAgIFwiU3RhdGVcIiAgICAgXG4ifQ== -->
+<pre><code>[1] &quot;IPF&quot;        &quot;Local&quot;      &quot;NAPF&quot;       &quot;National&quot;   &quot;Pro Meet&quot;   &quot;Pro Series&quot; &quot;Regional&quot;   &quot;State&quot;     </code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIkV4cGxvcmF0aW9uIG9mIFVTQVBMIFBvd2VybGlmdGluZyBEYXRhYmFzZSBVc2luZyBSIg0Kb3V0cHV0OiBodG1sX25vdGVib29rDQotLS0NCmBgYHtyfQ0KbGlicmFyeSgndGlkeXZlcnNlJykNCmBgYA0KDQoxLiBVc2luZyB0aGUgcmVhZF9jc3YoKSBmdW5jdGlvbiwgcmVhZCB0aGUgZGF0YXNldCBpbnRvIHlvdXIgbm90ZWJvb2sgYXMgYSB0aWJibGUgY2FsbGVkIHVzYXBsX2RhdGEuIEFmdGVyIHJlYWRpbmcgaXQgaW4sIGluc3BlY3QgdGhlIGZpcnN0IDEwIHJvd3MgYW5kIHRoZW4gaW5zcGVjdCB0aGUgbGFzdCAxMCByb3dzLg0KDQpgYGB7cn0NCnVzYXBsX2RhdGEgPC0gcmVhZF9jc3YoJy4uL2RhdGEvVVNBUExfcG93ZXJsaWZ0aW5nLmNzdicsIHNob3dfY29sX3R5cGVzID0gRkFMU0UpDQpjb21wX3R5cGVzIDwtIHJlYWRfY3N2KCcuLi9kYXRhL1VTQVBMX2NvbXBldGl0aW9ucy5jc3YnLCBzaG93X2NvbF90eXBlcyA9IEZBTFNFKQ0KYGBgDQoNCmBgYHtyfQ0KdXNhcGxfZGF0YSB8PiANCiAgdGFpbCgxMCkNCmBgYA0KDQpgYGB7cn0NCnVuaXF1ZSh1c2FwbF9kYXRhJENhdGVnb3J5KQ0KYGBgDQoNCg==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIkV4cGxvcmF0aW9uIG9mIFVTQVBMIFBvd2VybGlmdGluZyBEYXRhYmFzZSBVc2luZyBSIg0Kb3V0cHV0OiBodG1sX25vdGVib29rDQotLS0NCmBgYHtyfQ0KbGlicmFyeSgndGlkeXZlcnNlJykNCmBgYA0KDQoxLiBVc2luZyB0aGUgcmVhZF9jc3YoKSBmdW5jdGlvbiwgcmVhZCB0aGUgZGF0YXNldCBpbnRvIHlvdXIgbm90ZWJvb2sgYXMgYSB0aWJibGUgY2FsbGVkIHVzYXBsX2RhdGEuIEFmdGVyIHJlYWRpbmcgaXQgaW4sIGluc3BlY3QgdGhlIGZpcnN0IDEwIHJvd3MgYW5kIHRoZW4gaW5zcGVjdCB0aGUgbGFzdCAxMCByb3dzLg0KDQpgYGB7cn0NCnVzYXBsX2RhdGEgPC0gcmVhZF9jc3YoJy4uL2RhdGEvVVNBUExfcG93ZXJsaWZ0aW5nLmNzdicsIHNob3dfY29sX3R5cGVzID0gRkFMU0UpDQpjb21wX3R5cGVzIDwtIHJlYWRfY3N2KCcuLi9kYXRhL1VTQVBMX2NvbXBldGl0aW9ucy5jc3YnLCBzaG93X2NvbF90eXBlcyA9IEZBTFNFKQ0KdXNhcGwgPC0gcmVhZF9jc3YoJy4uL2RhdGEvdXNhcGwuY3N2Jywgc2hvd19jb2xfdHlwZXMgPSBGQUxTRSkNCmBgYA0KDQpgYGB7cn0NCnVzYXBsX2RhdGEgfD4gDQogIHRhaWwoMTApDQpgYGANCg0KYGBge3J9DQpsZW5ndGgodW5pcXVlKHVzYXBsJGBTYW5jdGlvbiBOdW1iZXJgKSkNCmBgYA0KYGBge3J9DQpsZW5ndGgodW5pcXVlKGNvbXBfdHlwZXMkYFNhbmN0aW9uIE51bWJlcmApKQ0KYGBgDQpgYGB7cn0NCih1bmlxdWUoY29tcF90eXBlcyRgTWVldCBUeXBlYCkpDQpgYGANCmBgYHtyfQ0KKHVuaXF1ZShjb21wX3R5cGVzJGBNZWV0IFR5cGVgKSkNCmBgYA0KDQo=</div>
 
 
 

@@ -11,6 +11,7 @@ library('tidyverse')
 ```{r}
 usapl_data <- read_csv('../data/USAPL_powerlifting.csv', show_col_types = FALSE)
 comp_types <- read_csv('../data/USAPL_competitions.csv', show_col_types = FALSE)
+usapl <- read_csv('../data/usapl.csv', show_col_types = FALSE)
 ```
 
 ```{r}
@@ -19,6 +20,15 @@ usapl_data |>
 ```
 
 ```{r}
-unique(usapl_data$Category)
+length(unique(usapl$`Sanction Number`))
+```
+```{r}
+length(unique(comp_types$`Sanction Number`))
+```
+```{r}
+(unique(comp_types$`Meet Type`))
+```
+```{r}
+(unique(comp_types$`Meet Type`))
 ```
 
