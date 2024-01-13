@@ -161,7 +161,36 @@ length(unique(usapl$`Sanction Number`))
 length(unique(usapl$`Meet Name`))
 ```
 
-**9. Check the comp_types DF to find the meets that did not have webscraped data**
+**9. Check the difference between the merged webscraped DF (usapl_merge) against the original webscraped DFs (usapl and usapl_new).**
+```{r}
+missing_data <- anti_join(usapl_merge, usapl, by = c("Meet Name", "Meet Date", "Sanction Number", "Meet Location"))
+
+length(unique(missing_data$`Meet Name`))
+unique(missing_data$`Meet Name`)
+```
+
+Check the other DF:
+```{r}
+missing_data2 <- anti_join(usapl_merge, usapl_new, by = c("Meet Name", "Meet Date", "Sanction Number", "Meet Location"))
+
+length(unique(missing_data2$`Meet Name`))
+unique(missing_data2$`Meet Name`)
+```
+
+Check the original webscraped DF's if it's there:
+```{r}
+usapl_new |> 
+  filter(`Meet Name` == "Atlanta Winter Smash")
+```
+Note: It looks like the merged webscraped DF contains is a successful merge of the two original webscraped DFs. *Export this DF as a csv.*
+```{r}
+write.csv(usapl_merge,
+          "../data/usapl_update.csv",
+         row.names=FALSE )
+```
+
+
+**10. Check the comp_types DF to find the meets that did not have webscraped data**
 ```{r}
 missing_data_comp_update <- anti_join(comp_types, usapl_merge, by = c("Meet Name", "Meet Date", "Sanction Number", "Meet Location"))
 
