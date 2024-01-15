@@ -4,3 +4,6 @@ notebooks/.RData
 notebooks/.Rhistory
 notebooks/analysis.nb.html
 notebooks/.ipynb_checkpoints/
+notebooks/global.R
+notebooks/server.R
+notebooks/ui.R
