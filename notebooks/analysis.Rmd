@@ -7,50 +7,41 @@ library('tidyverse')
 ```
 
 **1. Using the read_csv() function, read the datasets into your notebook.**
-  - Usapl = DataFrame with webscraped results from USAPL competitions.
-  - Comp_types = DataFrame with list of all competitions in USAPL website. 
-  - us_states = DataFrame with list of 50 US States. 
+  - Comp_types = All USAPL competitions and their urls from USAPL website.
+  - Usapl = Webscraped results from urls of USAPL competitions.
+  - Us_states = List of 50 US States. 
 
 ```{r}
 comp_types <- read_csv('../data/USAPL_competitions.csv', show_col_types = FALSE)
-usapl <- read_csv('../data/usapl_old.csv', show_col_types = FALSE)
-usapl_new <- read_csv('../data/usapl.csv', show_col_types = FALSE)
+usapl <- read_csv('../data/usapl_update.csv', show_col_types = FALSE)
 us_states <- read.delim('../data/us_states', header = TRUE)
 ```
 
 **2. Do some exploratory data analysis.** 
-How many unique meets are in usapl DataFrame? Some Meet Names are repeated every year so it makes sense if there's more sanction numbers than meet names. 
+
+How many unique meets are in usapl DataFrame? 
+Some Meet Names are repeated every year so it makes sense if there's more sanction numbers than meet names. Some meets also don't have sanction numbers. Need to create Unique Identification Number later. 
 ```{r}
 length(unique(usapl$`Sanction Number`))
 print(length(unique(usapl$`Meet Name`)))
 length(unique(usapl$`Meet Date`))
 ```
 
-Check how many times a sanction number appears in the DataFrame: 
-```{r}
-usapl |> 
-  group_by(`Sanction Number`) |> 
-  summarize(count = n())
-```
-It looks like the previous code shows how many rows are in that unique meet. Verify. 
-```{r}
-usapl |> 
-  filter(`Sanction Number` == "AL-2017-02")
-```
-
 How many unique meets are in comp_types DataFrame? 
 ```{r}
-length(unique(comp_types$`Sanction Number`))
+nrow(comp_types)
 ```
 
+Rename columns in comp_types DF to match column names in usapl DF. 
 ```{r}
 comp_types <- comp_types |> 
   rename(`Meet Date` = Date, `Meet Name` = Name, `Meet Location`= State)
 ```
 
-**3. Compare usapl DataFrame to comp_types DataFrame. Why are there 3255 results in comp_types and only 390 unique results in usapl df?**
+**3. Compare usapl DataFrame to comp_types DataFrame. There are 3255 meet results in comp_types, but the distinct count in usapl does not match this.**
 
-Missing_data_usapl is the DataFrame with rows containing information from meets in usapl DF but not found in comp_types DF. Why didn't these meets show up in the comp_types DF? 
+Missing_data_usapl is the DataFrame with rows containing information from meets in usapl DF but not found in comp_types DF. 
+Why didn't these meets show up in the comp_types DF? 
 ```{r}
 missing_data_usapl <- anti_join(usapl, comp_types, by = c("Meet Name", "Sanction Number"))
 
@@ -59,8 +50,7 @@ print(unique(missing_data_usapl$`Meet Name`))
 print(length(unique(missing_data_usapl$`Sanction Number`)))
 print(unique(missing_data_usapl$`Sanction Number`))
 ```
-
-
+What do the rows for these meets look like in the usapl DF? 
 ```{r}
 missing_data_usapl |> 
   select(1:5) |> 
@@ -72,16 +62,24 @@ Test to check if these meets are in the comp_types DF:
 comp_types |> 
   filter(`Meet Name` == "IPF World Masters Chamionships")
 ```
-
+Check if these meets are in usapl DF:
 ```{r}
-comp_types |> 
-  filter(`Meet Name` == "Pennsylvania States")
+usapl |> 
+  filter(`Meet Name` == "IPF World Masters Chamionships")
 ```
-It looks like something may have gone wrong with the webscraping since these meets appear to show up in the comp_types DF but with missing rows of information in the usapl DF. 
+It looks like something may have gone wrong with the webscraping since these meets appear to show up in the both DF's, but it has missing rows of information in the usapl DF. 
+
+*Explore why these meets are not showing properly in the usapl DF.*
+1. Re-run webscraping Python code for these meets. 
+2. Remove these meets from the usapl DF and concatenate the new webscraped results to usapl DF. 
+```{r}
+
+```
+
 
 **4. Extract meets from comp_types DF with urls that work and do not work.**
 
-Missing_data_usapl is the DataFrame with rows containing information from meets listed in comp_types DF but not found in usapl DF. 
+Missing_data_comp is the DataFrame with rows containing information from meets listed in comp_types DF but not found in usapl DF. 
 ```{r}
 missing_data_comp <- anti_join(comp_types, usapl, by = c("Meet Name", "Meet Date", "Sanction Number"))
 
@@ -100,10 +98,10 @@ us_meets <- comp_types |>
   filter(`Meet Location` %in% us_states$Name)
 ```
 
-How many meets are there in the US? There was a total of 3062 meets scraped from the USAPL website in comp_types DF. 96 meets are located outside of the US. 
+How many meets are there in the US? 
+There is a total of 3255 meets scraped from the USAPL website in comp_types DF. 96 meets are located outside of the US. 
 ```{r}
 length(unique(us_meets$`Sanction Number`)) 
-  
 ```
 
 **6. Which US meets have normal-looking URLs? Which have faulty URLs?** 
@@ -192,7 +190,7 @@ write.csv(usapl_merge,
 
 **10. Check the comp_types DF to find the meets that did not have webscraped data**
 ```{r}
-missing_data_comp_update <- anti_join(comp_types, usapl_merge, by = c("Meet Name", "Meet Date", "Sanction Number", "Meet Location"))
+missing_data_comp_update <- anti_join(us_meets_good_url, usapl_merge, by = c("Meet Name", "Meet Date", "Sanction Number", "Meet Location"))
 
 length(unique(missing_data_comp$`Meet Name`))
 length(unique(missing_data_comp$`Meet Name`))
@@ -200,11 +198,11 @@ length(unique(missing_data_comp$`Meet Name`))
 
 Extract these url's into another csv to be webscraped. 
 ```{r}
-# missing_data_urls <- missing_data_comp_update |> 
-#   select(Website)
+missing_data_urls <- missing_data_comp_update |>
+  select(Website)
 
-# write.csv(only_good_urls, 
-#           "../data/missing_data_urls.csv", 
-#          row.names=FALSE )
+write.csv(missing_data_urls,
+          "../data/missing_data_urls.csv",
+          row.names=FALSE)
 ```
 
