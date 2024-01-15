@@ -20,7 +20,7 @@ us_states <- read.delim('../data/us_states', header = TRUE)
 **2. Do some exploratory data analysis.** 
 
 How many unique meets are in usapl DataFrame? 
-Some Meet Names are repeated every year so it makes sense if there's more sanction numbers than meet names. Some meets also don't have sanction numbers. Need to create Unique Identification Number later. 
+Some Meet Names are repeated every year so it makes sense if there's more sanction numbers than meet names. Some meets also don't have sanction numbers. Need to create a Unique Identification Number later. 
 ```{r}
 length(unique(usapl$`Sanction Number`))
 print(length(unique(usapl$`Meet Name`)))
@@ -60,22 +60,26 @@ missing_data_usapl |>
 Test to check if these meets are in the comp_types DF:
 ```{r}
 comp_types |> 
-  filter(`Meet Name` == "IPF World Masters Chamionships")
+  filter(`Meet Name` == "South Dakota State Championships")
 ```
 Check if these meets are in usapl DF:
 ```{r}
 usapl |> 
-  filter(`Meet Name` == "IPF World Masters Chamionships")
+  filter(`Meet Name` == "South Dakota State Championships")
 ```
+
+Search for empty Sanction Numbers column:
+```{r}
+usapl |> 
+  filter(is.na(`Sanction Number`)) |> 
+  distinct(`Meet Name`)
+```
+
 It looks like something may have gone wrong with the webscraping since these meets appear to show up in the both DF's, but it has missing rows of information in the usapl DF. 
 
 *Explore why these meets are not showing properly in the usapl DF.*
 1. Re-run webscraping Python code for these meets. 
 2. Remove these meets from the usapl DF and concatenate the new webscraped results to usapl DF. 
-```{r}
-
-```
-
 
 **4. Extract meets from comp_types DF with urls that work and do not work.**
 
@@ -103,6 +107,33 @@ There is a total of 3255 meets scraped from the USAPL website in comp_types DF. 
 ```{r}
 length(unique(us_meets$`Sanction Number`)) 
 ```
+
+How many meets in comp_types have no Sanction Numbers? 
+
+```{r}
+comp_types |> 
+  filter(is.na(`Sanction Number`)) |> 
+  nrow() 
+```
+```{r}
+comp_types |> 
+  filter(is.na(`Sanction Number`)) |>
+  distinct(`Meet Date`) |> 
+  nrow()
+```
+
+
+When Sanction Number is empty and ...
+  - Meet Type = IPF, use value in Meet Type. 
+  - Meet Type = Local, use Meet Location and Date (state-year-month)
+  - Meet Type = NAPF, use value in Meet Type. 
+  - Meet Type = National, Meet Location and Date (state-year-month)
+  - Meet Type = State, Meet Location and Date (state-year-month). 
+```{r}
+comp_types |> 
+  filter(`Meet Type` == "State")
+```
+
 
 **6. Which US meets have normal-looking URLs? Which have faulty URLs?** 
 
@@ -148,47 +179,8 @@ us_meets_faulty_url$Website <- gsub("https://usapl.liftingdatabase.com/",
 
 us_meets_faulty_url
 ```
-**8. Merge new webscraped DataFrames to combine all scraped data.**
-```{r}
-usapl_merge <- unique(rbind(usapl, usapl_new))
-```
 
-Check how many unique meets are in this DF. There are 2966 meets in the US. I might have meets that do not have unique identification numbers, such as sanction numbers but are still located in the US. 
-```{r}
-length(unique(usapl$`Sanction Number`))
-length(unique(usapl$`Meet Name`))
-```
-
-**9. Check the difference between the merged webscraped DF (usapl_merge) against the original webscraped DFs (usapl and usapl_new).**
-```{r}
-missing_data <- anti_join(usapl_merge, usapl, by = c("Meet Name", "Meet Date", "Sanction Number", "Meet Location"))
-
-length(unique(missing_data$`Meet Name`))
-unique(missing_data$`Meet Name`)
-```
-
-Check the other DF:
-```{r}
-missing_data2 <- anti_join(usapl_merge, usapl_new, by = c("Meet Name", "Meet Date", "Sanction Number", "Meet Location"))
-
-length(unique(missing_data2$`Meet Name`))
-unique(missing_data2$`Meet Name`)
-```
-
-Check the original webscraped DF's if it's there:
-```{r}
-usapl_new |> 
-  filter(`Meet Name` == "Atlanta Winter Smash")
-```
-Note: It looks like the merged webscraped DF contains is a successful merge of the two original webscraped DFs. *Export this DF as a csv.*
-```{r}
-write.csv(usapl_merge,
-          "../data/usapl_update.csv",
-         row.names=FALSE )
-```
-
-
-**10. Check the comp_types DF to find the meets that did not have webscraped data**
+**8. Check the comp_types DF to find the meets that did not have webscraped data**
 ```{r}
 missing_data_comp_update <- anti_join(us_meets_good_url, usapl_merge, by = c("Meet Name", "Meet Date", "Sanction Number", "Meet Location"))
 
@@ -201,8 +193,60 @@ Extract these url's into another csv to be webscraped.
 missing_data_urls <- missing_data_comp_update |>
   select(Website)
 
-write.csv(missing_data_urls,
-          "../data/missing_data_urls.csv",
-          row.names=FALSE)
+# write.csv(missing_data_urls,
+#           "../data/missing_data_urls.csv",
+#           row.names=FALSE)
+```
+
+**9. Import new webscraped DataFrames and merge them to combine ALL scraped data.**
+
+Note: 
+  - usapl_update.csv is a merged DF of two initial usapl DF's AND missingdata.csv. usapl_update.csv is current usapl DF. 
+  - missingdata.csv is the result of webscraping missing_data_urls.csv 
+  - missinginfo.csv is the result of updating retrieve_info function in Python code because these meets had a table[0] (meet_info table) with less than four tags. 
+
+Import missinginfo.csv. 
+```{r}
+missinginfo <- read_csv('../data/missinginfo.csv', show_col_types = FALSE)
+```
+
+*To avoid duplication, remove the twenty meets that had missing info in the meet_info column types (meet info to meet director columns).* 
+
+In missing_data_usapl DF, pull the names of each meet. 
+```{r}
+missing_info_names <- missing_data_usapl |> 
+  distinct(`Meet Name`) |> 
+  pull()
+```
+
+Filter the usapl DF for those meets using that list of names. 
+Test:
+```{r}
+usapl |> 
+  filter(`Meet Name` %in% missing_info_names) |> 
+  filter(is.na(`Meet Date`))
+```
+Remove those meets from the usapl DF. 
+```{r}
+usapl <- usapl |> 
+  filter(!(`Meet Name` %in% missing_info_names & is.na(`Meet Date`)))
+```
+
+Merge missinginfo DF with usapl DF:
+```{r}
+usapl_update <- unique(rbind(usapl, missinginfo))
+```
+
+Some meets have a different format for information in table[0]. Meet Location is a website. Search for 'http' in this column. 
+```{r}
+usapl_update |> 
+  distinct(`Meet Location`)
+```
+
+
+Check how many unique meets are in this DF. There are 2966 meets in the US. I might have meets that do not have unique identification numbers, such as sanction numbers but are still located in the US. 
+```{r}
+length(unique(usapl$`Sanction Number`))
+length(unique(usapl$`Meet Name`))
 ```
 
