@@ -122,13 +122,6 @@ comp_types |>
   nrow()
 ```
 
-
-When Sanction Number is empty and ...
-  - Meet Type = IPF, use value in Meet Type. 
-  - Meet Type = Local, use Meet Location and Date (state-year-month)
-  - Meet Type = NAPF, use value in Meet Type. 
-  - Meet Type = National, Meet Location and Date (state-year-month)
-  - Meet Type = State, Meet Location and Date (state-year-month). 
 ```{r}
 comp_types |> 
   filter(`Meet Type` == "State")
@@ -182,13 +175,13 @@ us_meets_faulty_url
 
 **8. Check the comp_types DF to find the meets that did not have webscraped data**
 ```{r}
-missing_data_comp_update <- anti_join(us_meets_good_url, usapl_merge, by = c("Meet Name", "Meet Date", "Sanction Number", "Meet Location"))
+missing_data_comp_update <- anti_join(us_meets_good_url, usapl, by = c("Meet Name", "Meet Date", "Sanction Number", "Meet Location"))
 
 length(unique(missing_data_comp$`Meet Name`))
 length(unique(missing_data_comp$`Meet Name`))
 ```
 
-Extract these url's into another csv to be webscraped. 
+*Extract these url's into another csv to be webscraped.* 
 ```{r}
 missing_data_urls <- missing_data_comp_update |>
   select(Website)
@@ -200,47 +193,251 @@ missing_data_urls <- missing_data_comp_update |>
 
 **9. Import new webscraped DataFrames and merge them to combine ALL scraped data.**
 
-Note: 
-  - usapl_update.csv is a merged DF of two initial usapl DF's AND missingdata.csv. usapl_update.csv is current usapl DF. 
-  - missingdata.csv is the result of webscraping missing_data_urls.csv 
-  - missinginfo.csv is the result of updating retrieve_info function in Python code because these meets had a table[0] (meet_info table) with less than four tags. 
+*Note:* 
+  - *usapl_update.csv is a merged DF of two initial usapl DF's AND missingdata.csv. usapl_update.csv is current usapl DF.* 
+  - *missingdata.csv is the result of webscraping missing_data_urls.csv* 
+  - *missinginfo.csv is the result of updating retrieve_info function in Python code because these meets had a table[0] (meet_info table) with less than four tags.* 
 
-Import missinginfo.csv. 
+*a) Import missinginfo.csv.* 
 ```{r}
 missinginfo <- read_csv('../data/missinginfo.csv', show_col_types = FALSE)
 ```
 
-*To avoid duplication, remove the twenty meets that had missing info in the meet_info column types (meet info to meet director columns).* 
+*b) To avoid duplication, remove the twenty meets that had missing info in the meet_info column types (meet info to meet director columns).* 
 
 In missing_data_usapl DF, pull the names of each meet. 
 ```{r}
 missing_info_names <- missing_data_usapl |> 
   distinct(`Meet Name`) |> 
   pull()
+
+missing_info_names
 ```
 
-Filter the usapl DF for those meets using that list of names. 
+*c) Filter the usapl DF for those meets using that list of names.* 
 Test:
 ```{r}
 usapl |> 
   filter(`Meet Name` %in% missing_info_names) |> 
-  filter(is.na(`Meet Date`))
+  filter(is.na(`Meet Date`)) |> 
+  distinct(`Meet Name`)
 ```
-Remove those meets from the usapl DF. 
+*d) Remove those meets from the usapl DF.* 
 ```{r}
 usapl <- usapl |> 
   filter(!(`Meet Name` %in% missing_info_names & is.na(`Meet Date`)))
 ```
 
-Merge missinginfo DF with usapl DF:
+Verify that those meets are gone: 
+```{r}
+usapl |> 
+  filter(`Meet Name` %in% missing_info_names) |> 
+  filter(is.na(`Meet Date`))
+```
+
+*e) Merge missinginfo DF with usapl DF:*
 ```{r}
 usapl_update <- unique(rbind(usapl, missinginfo))
+```
+
+Verify that those meets exist: 
+```{r}
+usapl_update |> 
+  filter(`Meet Name` %in% missing_info_names) |> 
+  select(1:4)
 ```
 
 Some meets have a different format for information in table[0]. Meet Location is a website. Search for 'http' in this column. 
 ```{r}
 usapl_update |> 
   distinct(`Meet Location`)
+```
+Replace these inputs with the correct value. 
+```{r}
+replace_location <- c('http://goodlift.info/competitions.php?year=2018',
+             'Robert Wilks',
+             'http://styrkeloft.no/resultatservice/?page=protokoll_vis&id=3874',
+             'http://styrkeloft.no/resultatservice/?page=protokoll_vis&id=3526',
+             'http://styrkeloft.no/resultatservice/?page=protokoll_vis&id=3093',
+             'http://styrkeloft.no/resultatservice/?page=protokoll_vis&id=3008'
+)
+
+usapl_update |> 
+  filter(`Meet Location` %in% replace_location) |> 
+  mutate(`Meet Location` = "")
+```
+
+Manually correct Meet Director for Pacific Invitationals meet: 
+```{r}
+usapl_update |> 
+  filter(`Meet Name` == 'Pacific Invitationals') |> 
+  mutate(`Meet Director` = "Robert Wilks")
+```
+
+Replace values in the column and save it to the complete dataset.
+```{r}
+usapl_update <- usapl_update %>%
+  mutate(`Meet Director` = ifelse(`Meet Name` == 'Pacific Invitationals', "Robert Wilks", `Meet Director`),
+         `Meet Location` = ifelse(`Meet Location` %in% replace_location, "", `Meet Location`))
+```
+
+Verify these changes exist.
+```{r}
+usapl_update |> 
+  filter(`Meet Name` == 'Pacific Invitationals')
+```
+
+*Create the Unique Identification column:*
+Unique Identification will include 
+- Meet_Type - Meet_Date - Meet_Name - Website(values after "=" sign).
+
+
+First, convert Meet Date column in Comp_Types DF to Date type. 
+```{r}
+comp_types <- comp_types |> 
+  mutate(`Meet Date` = mdy(`Meet Date`))
+```
+
+Create Unique Identification Column in Comp_Types DF:
+```{r}
+# comp_types <- comp_types |>
+#   mutate(`Unique Identification` = paste(`Meet Type`,`Meet Date`, `Meet Name`, str_extract(Website, "\\d+"), sep='-'))
+
+comp_types <- comp_types |>
+  mutate(`Unique Identification` = paste(`Meet Type`,`Meet Date`, `Meet Name`, sep='-'))
+```
+
+*Some meets in comp_types have duplicates unique ID. Pull their unique identification names to a variable that can be used in usapl_updated DF. Then update their unique ID names by adding the ID number in Website column, which is after the "=" sign.* 
+
+Pull their unique identification names. 
+```{r}
+duplicate_id_names <- comp_types |> 
+  group_by(`Unique Identification`) |> 
+  filter(n()>1)
+```
+
+```{r}
+comp_types |> 
+  group_by(`Unique Identification`) |> 
+  filter(n()>1) |> 
+  mutate(`Unique Identification` = paste(`Meet Type`,`Meet Date`, `Meet Name`, str_extract(Website, "\\d+"), sep='-'))
+```
+
+Update the Unique Identification column in Comp_Types DF:
+```{r}
+comp_types <- comp_types |>
+  mutate(`Unique Identification` = ifelse(duplicated(`Unique Identification`) | duplicated(`Unique Identification`, fromLast = TRUE),
+                                           paste(`Meet Type`, `Meet Date`, `Meet Name`, str_extract(Website, "\\d+"), sep = '-'),
+                                           `Unique Identification`))
+
+```
+
+Check that there are no more duplicates:
+```{r}
+comp_types |> 
+  group_by(`Unique Identification`) |> 
+  filter(n()>1)
+```
+
+Create a new Date Format column in usapl_update DF. 
+```{r}
+usapl_update <- usapl_update |> 
+  mutate(`Date Format` = mdy(substr(`Meet Date`, 1, 10)))
+```
+
+**Extract names of meets under their competition type:**
+```{r}
+type_IPF <- comp_types |> 
+  filter(`Meet Type` == "IPF") |> 
+  distinct(`Meet Name`) |> 
+  pull()
+
+type_Local <- comp_types |> 
+  filter(`Meet Type` == "Local") |> 
+  distinct(`Meet Name`) |> 
+  pull()
+
+type_NAPF <- comp_types |> 
+  filter(`Meet Type` == "NAPF") |> 
+  distinct(`Meet Name`) |> 
+  pull()
+
+type_National <- comp_types |> 
+  filter(`Meet Type` == "National") |> 
+  distinct(`Meet Name`) |> 
+  pull()
+
+type_Pro_Meet <- comp_types |> 
+  filter(`Meet Type` == "Pro Meet") |> 
+  distinct(`Meet Name`) |> 
+  pull()
+
+type_Pro_Series <- comp_types |> 
+  filter(`Meet Type` == "Pro Series") |> 
+  distinct(`Meet Name`) |> 
+  pull()
+
+type_Regional <- comp_types |> 
+  filter(`Meet Type` == "Regional") |> 
+  distinct(`Meet Name`) |> 
+  pull()
+
+type_State <- comp_types |> 
+  filter(`Meet Type` == "State") |> 
+  distinct(`Meet Name`) |> 
+  pull()
+```
+
+*Create a Meet Type column in usapl_update and update it with meet type from type variables:*
+```{r}
+usapl_update <- usapl_update |> 
+  mutate(`Meet Type` = case_when(`Meet Name` %in% type_IPF ~ 'IPF',
+                                 `Meet Name` %in% type_Local ~ 'Local',
+                                 `Meet Name` %in% type_NAPF ~ 'NAPF',
+                                 `Meet Name` %in% type_National ~ 'National',
+                                 `Meet Name` %in% type_Pro_Meet ~ 'Pro Meet',
+                                 `Meet Name` %in% type_Pro_Series ~ 'Pro Series',
+                                 `Meet Name` %in% type_Regional ~ 'Regional',
+                                 `Meet Name` %in% type_State ~ 'State',
+                                 TRUE ~ NA_character_
+                                 )
+         )
+```
+
+*Create a Unique Identification column in usapl_update.* 
+```{r}
+usapl_update <- usapl_update |>
+  mutate(`Unique Identification` = paste(`Meet Type`, `Date Format`, `Meet Name`, sep='-'))
+```
+
+Check for duplicates in Unique Identification column in usapl_update DF: 
+```{r}
+duplicate_id_names
+```
+Saved duplicates in usapl_update DF into their own DF:
+```{r}
+duplicates_in_usapl <- usapl_update |> 
+  filter(`Unique Identification` %in% duplicate_id_names$`Unique Identification`)
+```
+
+Deleted these duplicate unique ID results in usapl_update DF:
+```{r}
+usapl_update <- usapl_update |> 
+  filter(!(`Unique Identification` %in% duplicate_id_names$`Unique Identification`))
+```
+
+**Update their names in Unique Identification column. Merge this DF back with usapl_update DF.**
+```{r}
+duplicates_in_usapl |> 
+  filter(`Unique Identification` == "Local-2018-03-18-Chicagoland Men's Raw Open") |> distinct(`Meet Name`)
+```
+```{r}
+duplicates_in_usapl |>
+  mutate(`Unique Identification` = case_when(
+    `Unique Identification` == "Local-2020-09-19-Thunder Open" & `Sanction Number` == "CO-2020-05" ~ "Local-2020-09-19-Thunder Open-119468",
+    `Unique Identification` == "Local-2020-09-19-Thunder Open" & `Sanction Number` == "CO-2020-07" ~ "Local-2020-09-19-Thunder Open-119479",
+    TRUE ~ `Unique Identification`
+  ))
 ```
 
 
