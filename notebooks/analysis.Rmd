@@ -7,10 +7,15 @@ library('tidyverse')
 ```
 
 **1. Using the read_csv() function, read the datasets into your notebook.**
+
   - Comp_types = All USAPL competitions and their urls from USAPL website.
+  
   - Usapl = Webscraped results from urls of USAPL competitions.
+  
   - Us_states = List of 50 US States. 
+  
   - Usapl_timed_out = Webscraped results from urls with timed out errors during Python webscraping. 
+  
   - Usapl_list_index = Webscraped results from urls with "list index out of range" errors during Python webscraping.
 
 ```{r}
@@ -41,19 +46,7 @@ comp_types <- comp_types |>
   rename(`Meet Date` = Date, `Meet Name` = Name, `Meet Location`= State)
 ```
 
-**2. Compare usapl DataFrame to comp_types DataFrame. Make sure both DataFrames have the same information.**
-
-Missing_data_usapl is the DataFrame with rows containing information from meets in usapl DF but not found in comp_types DF. 
-```{r}
-missing_data_usapl <- anti_join(usapl, comp_types, by = c("Meet Name", "Sanction Number"))
-
-length(unique(missing_data_usapl$`Meet Name`))
-print(unique(missing_data_usapl$`Meet Name`))
-print(length(unique(missing_data_usapl$`Sanction Number`)))
-print(unique(missing_data_usapl$`Sanction Number`))
-```
-
-**3. Do some exploratory data analysis.** 
+**2. Do some exploratory data analysis.** 
 
 *There were some errors retrieving data from some urls due to request being timed out. Check if usapl DF has these competitions' data:*
 ```{r}
@@ -72,9 +65,11 @@ print(length(unique(usapl$`Meet Name`)))
 *How many unique meets are in comp_types DataFrame?* 
 ```{r}
 nrow(comp_types)
+length(unique(usapl$`Sanction Number`))
+length(unique(usapl$`Meet Name`))
 ```
 
-**4. Compare the number of competitions listed under each meet type in USAPL results database (https://usapl.liftingdatabase.com/competitions-default?t=&s=).** 
+**3. Compare the number of competitions listed under each meet type in USAPL results database (https://usapl.liftingdatabase.com/competitions-default?t=&s=).** 
 There are nine meet types in USAPL Federation: International, IPF (International POwerlifting Federation), Local, NAPF (North American Powerlifting Federation), Pro Meet, Pro Series, Regional, and State. There are no International meets so it is not included in dataset. 
 
 According to USAPL results database online, there should be: 
@@ -90,7 +85,7 @@ According to USAPL results database online, there should be:
 
 The total matches the number of observations in comp_types DF. 
 
-**5. Data Cleaning**
+**4. Data Cleaning/ Exploring**
 
 *Convert Meet Date column in both DataFrames to Date type. Need to create a new column with Date type for usapl DF because some meets in Meet Date column contain a range of dates.* 
 ```{r}
@@ -103,6 +98,81 @@ usapl <- usapl |>
 str(usapl$`Date Format`)
 ```
 
-*Create Unique Identification column for both DataFrames.*
+*What do the meets without Sanction Numbers look like? How many meets have no Sanction Numbers?*
+```{r}
+comp_types |> 
+  filter(is.na(`Sanction Number`)) |> 
+  nrow()
+```
 
+*How many meets without Sanction Numbers have distinct meet names or meet dates in comp_types DF?*
+```{r}
+comp_types |> 
+  filter(is.na(`Sanction Number`)) |> 
+  distinct(`Meet Name`) |> 
+  nrow()
+
+comp_types |> 
+  filter(is.na(`Sanction Number`)) |> 
+  distinct(`Meet Date`) |> 
+  nrow()
+```
+
+**5. Create a Unique Identification column for both DataFrames. Remove duplicates and export DataFrame as csv.**
+Format: Meet_Date - Meet_Name
+
+*a) Create the Unique Identification column.* 
+```{r}
+comp_types <- comp_types |> 
+  mutate(`Unique Identification` = paste(`Meet Date`, `Meet Name`, sep='-'))
+
+usapl <- usapl |> 
+  mutate(`Unique Identification` = paste(`Date Format`, `Meet Name`, sep='-'))
+```
+
+*b) Extract these datasets with ALL data and new columns:*
+```{r}
+write.csv(comp_types,
+          "../data/comp_types_ALL.csv",
+          row.names=FALSE)
+
+write.csv(usapl,
+          "../data/usapl_ALL.csv",
+          row.names=FALSE)
+```
+
+*c) Extract the names of duplicates:*
+Note: Original DF has 3268 observations. How many after duplicate removal? 3258 observations. 
+```{r}
+duplicates <- comp_types |> 
+  group_by(`Unique Identification`) |> 
+  filter(n()>1) |> 
+  distinct(`Unique Identification`) |> 
+  pull()
+
+duplicates
+```
+
+*d) Remove duplicates.* 
+```{r}
+comp_types <- comp_types |>
+  filter(!(`Unique Identification` %in% duplicates))
+
+usapl <- usapl |>
+  filter(!(`Unique Identification` %in% duplicates))
+
+nrow(comp_types)
+nrow(usapl)
+```
+
+*e) Export these DataFrames as csv's, which will be used for project.*
+```{r}
+write.csv(comp_types,
+          "../data/comp_types_PROJ.csv",
+          row.names=FALSE)
+
+write.csv(usapl,
+          "../data/usapl_PROJ.csv",
+          row.names=FALSE)
+```
 
