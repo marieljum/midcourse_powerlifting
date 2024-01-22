@@ -4,9 +4,11 @@ notebooks/.RData
 notebooks/.Rhistory
 notebooks/analysis.nb.html
 notebooks/.ipynb_checkpoints/
-notebooks/usapl_shiny/
 notebooks/analysis-notes.Rmd
 notebooks/analysis-notes.nb.html
+notebooks/analysis-notes.Rmd
+notebooks/visualization.Rmd
+notebooks/visualization.nb.html
 
 
 
