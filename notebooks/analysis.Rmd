@@ -3,7 +3,9 @@ title: "Exploration of USAPL Powerlifting Database Using R"
 output: html_notebook
 ---
 ```{r}
-library('tidyverse')
+library(tidyverse)
+library(sf)
+library(leaflet)
 ```
 
 **1. Using the read_csv() function, read the datasets into your notebook.**
@@ -17,13 +19,16 @@ library('tidyverse')
   - Usapl_timed_out = Webscraped results from urls with timed out errors during Python webscraping. 
   
   - Usapl_list_index = Webscraped results from urls with "list index out of range" errors during Python webscraping.
+  
+  - Us_states_shp = 2018 shapefile of states in US. Downloaded from US Census Bureau website (https://www.census.gov/geographies/mapping-files/time-series/geo/carto-boundary-file.html). 
 
 ```{r}
-comp_types <- read_csv('../data/USAPL_competitions_new.csv', show_col_types = FALSE)
-usapl <- read_csv('../data/usapl_newnew.csv', show_col_types = FALSE)
-usapl_timedout <- read_csv('../data/usapl_timed_out.csv', show_col_types = FALSE)
-usapl_listindex <- read_csv('../data/usapl_list_index.csv', show_col_types = FALSE)
+comp_types <- read_csv('../data/original/USAPL_competitions_new.csv', show_col_types = FALSE)
+usapl <- read_csv('../data/original/usapl_newnew.csv', show_col_types = FALSE)
+usapl_timedout <- read_csv('../data/original/usapl_timed_out.csv', show_col_types = FALSE)
+usapl_listindex <- read_csv('../data/original/usapl_list_index.csv', show_col_types = FALSE)
 us_states <- read.delim('../data/us_states', header = TRUE)
+us_states_shp <- st_read('../data/cb_2018_us_state/cb_2018_us_state_20m.shp')
 ```
 
 *Notate the number of results for each webscraped results:*
@@ -118,7 +123,7 @@ comp_types |>
   nrow()
 ```
 
-**5. Create a Unique Identification column for both DataFrames. Remove duplicates and export DataFrame as csv.**
+**5. Create a Unique Identification column for both DataFrames. Remove duplicates.**
 Format: Meet_Date - Meet_Name
 
 *a) Create the Unique Identification column.* 
@@ -132,13 +137,13 @@ usapl <- usapl |>
 
 *b) Extract these datasets with ALL data and new columns:*
 ```{r}
-write.csv(comp_types,
-          "../data/comp_types_ALL.csv",
-          row.names=FALSE)
-
-write.csv(usapl,
-          "../data/usapl_ALL.csv",
-          row.names=FALSE)
+# write.csv(comp_types,
+#           "../data/comp_types_ALL.csv",
+#           row.names=FALSE)
+# 
+# write.csv(usapl,
+#           "../data/usapl_ALL.csv",
+#           row.names=FALSE)
 ```
 
 *c) Extract the names of duplicates:*
@@ -165,14 +170,75 @@ nrow(comp_types)
 nrow(usapl)
 ```
 
-*e) Export these DataFrames as csv's, which will be used for project.*
-```{r}
-write.csv(comp_types,
-          "../data/comp_types_PROJ.csv",
-          row.names=FALSE)
 
+**6. Remove meet locations outside the US in usapl database. Original data contained 224,815 rows. How many rows does the new data have?**
+```{r}
+usapl <- usapl |> 
+  filter(`Meet Location` %in% us_states$Name) 
+
+nrow(usapl)
+```
+
+**7. Add Type info to usapl DF by merging comp_types DF with usapl DF using Unique Identification column. Remove repeating column names in comp_types DF first. **
+*Export this current usapl DataFrame with all new column names.* 
+```{r}
+types <- comp_types |> 
+  select(`Meet Type`, `Unique Identification`)
+
+usapl <- merge(usapl, types, by="Unique Identification")
+
+#Reorder columns
+usapl |>
+  select(`Meet Name`, `Meet Date`, `Meet Location`, `Sanction Number`, `Unique Identification`, `Meet Director`, `Meet Type`, everything())
+
+# Export to csv
 write.csv(usapl,
-          "../data/usapl_PROJ.csv",
+          "../notebooks/usapl_shiny/data/usapl_PROJ.csv",
           row.names=FALSE)
+```
+
+
+**8. Export DataFrames/ Shapefiles. Merge us_states shapefile to comp_types DF using Meet Location column (comp_types)/ Name column (us_states_shp). Convert DataFrame to a shapefile so it can be visualized in a map.**
+```{r}
+us_states_shp <- us_states_shp |> 
+  select(STUSPS, "Meet Location" = NAME, geometry)
+
+comp_types <- merge(comp_types, us_states_shp, by="Meet Location")
+
+comp_types <- st_sf(comp_types)
+
+# Make sure only the records with locations in US States are kept
+comp_types <- comp_types |> 
+  filter(`Meet Location` %in% us_states$Name)
+
+# Received a warning about inconsistent datum. Needed '+proj=longlat +datum=WGS84'
+comp_types <- st_transform(comp_types, crs = st_crs("+proj=longlat +datum=WGS84"))
+
+# Export Shapefile to shp
+st_write(comp_types,
+          "../notebooks/usapl_shiny/data/comp_types_PROJ.shp",
+         crs = st_crs(4326),
+         encoding = "UTF-8",
+         append = FALSE,
+         row.names=FALSE)
+```
+
+**9. Plot map of all competitions by state using leaflet.**
+```{r}
+leaflet(comp_types) |>
+          addTiles() |> 
+          addPolygons(
+            fillColor = "blue",
+            fillOpacity = 0.5,
+            color = "white",
+            weight = 1,
+            label = ~`Meet Location`,
+            popup = ~paste(
+              "Meet Name: ", `Meet Name`,
+              "<br>Meet Date: ", `Meet Date`,
+              "<br>Type: ", `Meet Type`
+            )
+          ) |> 
+  setView(lng = -98.5795, lat = 39.8283, zoom = 4)
 ```
 
