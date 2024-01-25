@@ -12,7 +12,7 @@ navbarPage(tags$b("USA Powerlifting"), id = "nav",
                         # Panel for map selection
                         absolutePanel(id = "controls", fixed = TRUE, draggable = FALSE,
                                       top = 60, left = 190, right = "auto", bottom = "auto",
-                                      width = 500, height = "auto",
+                                      width = 450, height = "auto",
                                       
                                       h3(tags$b("USAPL Competitions in the US")),
                                       
@@ -29,7 +29,7 @@ navbarPage(tags$b("USA Powerlifting"), id = "nav",
                         # Panel for state info selection 
                         absolutePanel(id = "controls", fixed = TRUE, draggable = FALSE,
                                       top = 60, left = "auto", right = 10, bottom = "auto",
-                                      width = 700, height = "auto",
+                                      width = 750, height = "auto",
                                       
                                       h3(tags$b("Find meets in your area:")),
                                       
@@ -41,36 +41,79 @@ navbarPage(tags$b("USA Powerlifting"), id = "nav",
                                                            selected = "", multiple = FALSE)
                                         )
                                       ),
-                                      tableOutput("uniquemeetTable"), 
+                                      card(
+                                        height = 330, 
+                                        full_screen = TRUE,
+                                        tableOutput("uniquemeetTable")
+                                      ),
+                                      
+                                      br(), 
                                       
                                       h4(tags$b("Meets Throughout Time")),
                                       
-                                      plotOutput("allmeets_time")
+                                      br(),
+                                      
+                                      card(
+                                        height = 300, 
+                                        full_screen = TRUE, 
+                                        card_body(
+                                          layout_column_wrap(
+                                            width = 1/2,
+                                            plotlyOutput("allmeets_time"),
+                                            highchartOutput("allmeets_type")
+                                          )
+                                        )
+                                      )
                         )
                     )
            ), 
            
            tabPanel("Meet Results",
                     fluidRow(
-                      column(4,
+                      column(3,
                              selectInput("states", 
-                                         "States", 
+                                         "Select a state", 
                                          choices = state_choices, 
                                          multiple = FALSE)
                       ),
-                      column(4, 
-                             selectInput("type",
-                                         "Meet Type",
-                                         choices = type_choices,
-                                         multiple = TRUE)
+                      column(3, 
+                             selectInput("year",
+                                         "Select a year",
+                                         choices = c("All", year_choices), 
+                                         selected = "All",
+                                         multiple = FALSE)
                       ),
-                      column(4, 
-                             selectInput("meet",
+                      column(3, 
+                             radioButtons("type",
+                                         "Meet Type",
+                                         choices = c("All", type_choices),
+                                         inline = TRUE, 
+                                         selected = "All")
+                      ),
+                      column(3, 
+                             selectizeInput("meet",
                                          "Select a meet",
                                          choices = "", 
                                          selected = "")
                       )
+                    ),
+                    navset_pill(
+                      br(),
+                      fluidRow(
+                        column(3,
+                               radioButtons("life_units",
+                                            "Select units",
+                                            choices = c("kg", "lbs"),
+                                            selected = "kg")
+                               
+                               )
+                      ),
+                      nav_panel("Graph", plotlyOutput("usaplmeetsGraph")),
+                      nav_panel("Table", tableOutput("usaplmeetsTable"))
                     )
+                      
+                      
+                    
            )
 )
 

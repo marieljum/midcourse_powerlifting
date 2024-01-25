@@ -31,17 +31,7 @@ h1, h2, h3, h4 { font-weight: 400; }
   transition: opacity 500ms 1s;
 }
 
-/* Limit size of table output */
-#uniquemeetTable {
-  max-height: 60vh; /* Adjust the percentage as needed */
-  overflow-y: auto;
-}
 
-/* Limit size of plot output */
-#allmeets_time {
-  max-height: 20vh; /* Adjust the percentage as needed */
-  overflow-y: auto;
-}
 
 /* If not using map tiles, show a white background */
 .leaflet-container {
