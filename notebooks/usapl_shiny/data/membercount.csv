@@ -1,0 +1,398 @@
+"Meet Location","Year","MemberCount"
+"Alabama","2016",125
+"Alabama","2017",90
+"Alabama","2018",104
+"Alabama","2019",195
+"Alabama","2020",30
+"Alabama","2021",96
+"Alabama","2022",60
+"Alabama","2023",86
+"Alaska","2016",275
+"Alaska","2017",155
+"Alaska","2018",101
+"Alaska","2019",103
+"Alaska","2020",52
+"Alaska","2021",69
+"Alaska","2022",82
+"Alaska","2023",83
+"Arizona","2014",59
+"Arizona","2015",154
+"Arizona","2016",229
+"Arizona","2017",262
+"Arizona","2018",395
+"Arizona","2019",422
+"Arizona","2020",107
+"Arizona","2021",214
+"Arizona","2022",315
+"Arizona","2023",383
+"Arkansas","2019",36
+"Arkansas","2020",27
+"Arkansas","2021",47
+"Arkansas","2022",58
+"Arkansas","2023",106
+"California","2016",636
+"California","2017",1046
+"California","2018",1109
+"California","2019",1020
+"California","2020",243
+"California","2021",606
+"California","2022",1203
+"California","2023",2035
+"California","2024",53
+"Colorado","2015",52
+"Colorado","2016",493
+"Colorado","2017",353
+"Colorado","2018",331
+"Colorado","2019",356
+"Colorado","2020",186
+"Colorado","2021",843
+"Colorado","2022",472
+"Colorado","2023",612
+"Connecticut","2016",134
+"Connecticut","2017",246
+"Connecticut","2018",432
+"Connecticut","2019",387
+"Connecticut","2020",234
+"Connecticut","2021",277
+"Connecticut","2022",303
+"Connecticut","2023",402
+"Delaware","2017",97
+"Delaware","2018",51
+"Delaware","2019",115
+"Delaware","2021",60
+"Delaware","2022",28
+"Delaware","2023",54
+"Florida","2013",351
+"Florida","2015",1
+"Florida","2016",525
+"Florida","2017",1725
+"Florida","2018",680
+"Florida","2019",1034
+"Florida","2020",661
+"Florida","2021",1627
+"Florida","2022",832
+"Florida","2023",1149
+"Georgia","2015",190
+"Georgia","2016",1367
+"Georgia","2017",337
+"Georgia","2018",591
+"Georgia","2019",510
+"Georgia","2020",257
+"Georgia","2021",341
+"Georgia","2022",704
+"Georgia","2023",819
+"Georgia","2024",105
+"Hawaii","2016",11
+"Hawaii","2018",52
+"Hawaii","2019",42
+"Hawaii","2020",30
+"Hawaii","2022",207
+"Hawaii","2023",270
+"Idaho","2016",98
+"Idaho","2017",161
+"Idaho","2018",133
+"Idaho","2019",115
+"Idaho","2020",103
+"Idaho","2021",107
+"Idaho","2022",104
+"Idaho","2023",119
+"Illinois","2016",358
+"Illinois","2017",314
+"Illinois","2018",211
+"Illinois","2019",1754
+"Illinois","2021",142
+"Illinois","2022",1948
+"Illinois","2023",624
+"Indiana","2016",74
+"Indiana","2017",5
+"Indiana","2018",182
+"Indiana","2019",141
+"Indiana","2020",48
+"Indiana","2022",52
+"Indiana","2023",314
+"Indiana","2024",54
+"Iowa","2016",62
+"Iowa","2017",163
+"Iowa","2018",127
+"Iowa","2019",181
+"Iowa","2020",107
+"Iowa","2021",69
+"Iowa","2022",65
+"Iowa","2023",88
+"Kansas","2016",78
+"Kansas","2017",102
+"Kansas","2018",176
+"Kansas","2019",151
+"Kansas","2020",83
+"Kansas","2021",65
+"Kansas","2022",245
+"Kansas","2023",249
+"Kentucky","2017",118
+"Kentucky","2018",60
+"Kentucky","2019",46
+"Kentucky","2020",35
+"Kentucky","2022",55
+"Kentucky","2023",93
+"Louisiana","2012",245
+"Louisiana","2015",7
+"Louisiana","2016",410
+"Louisiana","2017",501
+"Louisiana","2018",607
+"Louisiana","2019",1131
+"Louisiana","2020",239
+"Louisiana","2021",902
+"Louisiana","2022",523
+"Louisiana","2023",565
+"Louisiana","2024",84
+"Maine","2017",12
+"Maine","2018",101
+"Maine","2019",73
+"Maine","2020",22
+"Maine","2021",61
+"Maine","2022",126
+"Maine","2023",217
+"Maryland","2015",89
+"Maryland","2016",363
+"Maryland","2017",444
+"Maryland","2018",406
+"Maryland","2019",333
+"Maryland","2020",170
+"Maryland","2021",207
+"Maryland","2022",256
+"Maryland","2023",353
+"Massachusetts","2016",320
+"Massachusetts","2017",563
+"Massachusetts","2018",390
+"Massachusetts","2019",394
+"Massachusetts","2020",337
+"Massachusetts","2021",426
+"Massachusetts","2022",678
+"Massachusetts","2023",740
+"Michigan","2016",298
+"Michigan","2017",278
+"Michigan","2018",318
+"Michigan","2019",329
+"Michigan","2020",203
+"Michigan","2021",475
+"Michigan","2022",362
+"Michigan","2023",606
+"Minnesota","2015",35
+"Minnesota","2016",443
+"Minnesota","2017",489
+"Minnesota","2018",512
+"Minnesota","2019",685
+"Minnesota","2020",175
+"Minnesota","2021",357
+"Minnesota","2022",493
+"Minnesota","2023",259
+"Mississippi","2016",89
+"Mississippi","2017",106
+"Mississippi","2018",92
+"Mississippi","2019",60
+"Mississippi","2020",92
+"Mississippi","2021",140
+"Mississippi","2022",41
+"Mississippi","2023",34
+"Missouri","2016",141
+"Missouri","2017",104
+"Missouri","2018",367
+"Missouri","2019",177
+"Missouri","2020",178
+"Missouri","2021",307
+"Missouri","2022",451
+"Missouri","2023",433
+"Montana","2016",27
+"Montana","2017",62
+"Montana","2018",67
+"Montana","2019",57
+"Montana","2020",13
+"Montana","2021",54
+"Montana","2022",60
+"Montana","2023",29
+"Nebraska","2015",25
+"Nebraska","2016",216
+"Nebraska","2017",239
+"Nebraska","2018",169
+"Nebraska","2019",271
+"Nebraska","2020",91
+"Nebraska","2021",333
+"Nebraska","2022",257
+"Nebraska","2023",426
+"Nevada","2015",2
+"Nevada","2016",79
+"Nevada","2017",65
+"Nevada","2018",37
+"Nevada","2019",79
+"Nevada","2020",39
+"Nevada","2021",53
+"Nevada","2022",1032
+"Nevada","2023",276
+"New Hampshire","2016",71
+"New Hampshire","2017",152
+"New Hampshire","2018",200
+"New Hampshire","2019",187
+"New Hampshire","2020",96
+"New Hampshire","2021",171
+"New Hampshire","2022",211
+"New Hampshire","2023",288
+"New Hampshire","2024",57
+"New Jersey","2016",553
+"New Jersey","2017",747
+"New Jersey","2018",518
+"New Jersey","2019",576
+"New Jersey","2020",200
+"New Jersey","2021",432
+"New Jersey","2022",520
+"New Jersey","2023",701
+"New Jersey","2024",60
+"New Mexico","2016",29
+"New Mexico","2017",38
+"New Mexico","2018",67
+"New Mexico","2019",57
+"New Mexico","2020",31
+"New Mexico","2021",48
+"New Mexico","2022",92
+"New Mexico","2023",165
+"New York","2015",90
+"New York","2016",771
+"New York","2017",876
+"New York","2018",989
+"New York","2019",1056
+"New York","2020",460
+"New York","2021",579
+"New York","2022",1089
+"New York","2023",1488
+"North Carolina","2016",222
+"North Carolina","2017",149
+"North Carolina","2018",406
+"North Carolina","2019",310
+"North Carolina","2020",112
+"North Carolina","2021",221
+"North Carolina","2022",474
+"North Carolina","2023",626
+"North Carolina","2024",38
+"North Dakota","2021",29
+"Ohio","2015",191
+"Ohio","2016",495
+"Ohio","2017",487
+"Ohio","2018",512
+"Ohio","2019",1544
+"Ohio","2020",459
+"Ohio","2021",579
+"Ohio","2022",1018
+"Ohio","2023",984
+"Ohio","2024",102
+"Oklahoma","2012",17
+"Oklahoma","2017",54
+"Oklahoma","2018",15
+"Oklahoma","2019",32
+"Oklahoma","2020",36
+"Oklahoma","2021",83
+"Oklahoma","2022",133
+"Oklahoma","2023",175
+"Oregon","2016",44
+"Oregon","2017",105
+"Oregon","2018",162
+"Oregon","2019",252
+"Oregon","2020",25
+"Oregon","2023",106
+"Pennsylvania","2016",597
+"Pennsylvania","2017",1182
+"Pennsylvania","2018",1134
+"Pennsylvania","2019",867
+"Pennsylvania","2020",528
+"Pennsylvania","2021",449
+"Pennsylvania","2022",770
+"Pennsylvania","2023",1043
+"Rhode Island","2016",431
+"Rhode Island","2017",116
+"Rhode Island","2018",147
+"Rhode Island","2019",133
+"Rhode Island","2021",38
+"Rhode Island","2022",48
+"Rhode Island","2023",73
+"South Carolina","2015",76
+"South Carolina","2016",131
+"South Carolina","2017",232
+"South Carolina","2018",153
+"South Carolina","2019",133
+"South Carolina","2020",152
+"South Carolina","2021",312
+"South Carolina","2022",419
+"South Carolina","2023",1003
+"South Carolina","2024",4
+"South Dakota","2016",81
+"South Dakota","2017",96
+"South Dakota","2018",124
+"South Dakota","2019",261
+"South Dakota","2020",59
+"South Dakota","2021",81
+"South Dakota","2022",96
+"South Dakota","2023",111
+"Tennessee","2017",75
+"Tennessee","2018",123
+"Tennessee","2019",187
+"Tennessee","2020",107
+"Tennessee","2021",49
+"Tennessee","2022",63
+"Tennessee","2023",1026
+"Texas","2014",141
+"Texas","2015",317
+"Texas","2016",915
+"Texas","2017",1973
+"Texas","2018",2191
+"Texas","2019",1822
+"Texas","2020",943
+"Texas","2021",1708
+"Texas","2022",2439
+"Texas","2023",3635
+"Texas","2024",57
+"Utah","2018",20
+"Utah","2022",74
+"Utah","2023",95
+"Vermont","2017",29
+"Vermont","2018",22
+"Vermont","2022",10
+"Vermont","2023",27
+"Virginia","2016",270
+"Virginia","2017",203
+"Virginia","2018",531
+"Virginia","2019",728
+"Virginia","2020",327
+"Virginia","2021",578
+"Virginia","2022",802
+"Virginia","2023",1123
+"Virginia","2024",52
+"Washington","2016",404
+"Washington","2017",459
+"Washington","2018",1734
+"Washington","2019",863
+"Washington","2020",199
+"Washington","2021",298
+"Washington","2022",872
+"Washington","2023",915
+"West Virginia","2016",31
+"West Virginia","2017",65
+"West Virginia","2018",52
+"West Virginia","2019",77
+"West Virginia","2020",33
+"West Virginia","2021",90
+"West Virginia","2022",34
+"West Virginia","2023",22
+"Wisconsin","2015",15
+"Wisconsin","2016",803
+"Wisconsin","2017",1030
+"Wisconsin","2018",1463
+"Wisconsin","2019",998
+"Wisconsin","2020",897
+"Wisconsin","2021",585
+"Wisconsin","2022",1178
+"Wisconsin","2023",1645
+"Wyoming","2016",71
+"Wyoming","2017",91
+"Wyoming","2018",81
+"Wyoming","2019",96
+"Wyoming","2020",78
+"Wyoming","2021",94
+"Wyoming","2022",117
+"Wyoming","2023",183

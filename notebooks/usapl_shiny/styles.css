@@ -31,9 +31,12 @@ h1, h2, h3, h4 { font-weight: 400; }
   transition: opacity 500ms 1s;
 }
 
-
-
 /* If not using map tiles, show a white background */
 .leaflet-container {
   background-color: white !important;
+}
+
+/* Adjust the font size here of valueboxes */
+.value-box {
+  font-size: 20px !important;  
 }
