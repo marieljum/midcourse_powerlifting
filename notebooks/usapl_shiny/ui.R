@@ -124,14 +124,13 @@ navbarPage(tags$b("USA Powerlifting"), id = "nav",
                                 fluidRow(
                                   br(),
                                   column(6,
-                                         h4(tags$b("First place competitors"))
+                                         h4(tags$b("First Place Competitors"))
                                   ),
                                   column(6,
                                          h4(tags$b("Meet Summary"))
                                   )
                                 ),
                                 br(),
-                                # h4(tags$b("First place competitors")),
                                 fluidRow(
                                   column(6,
                                          plotlyOutput("firstplaceGraph")),
@@ -162,6 +161,16 @@ navbarPage(tags$b("USA Powerlifting"), id = "nav",
 
 
            )
+           ), 
+           
+           tabPanel("Competitor Search", 
+                    fluidRow(
+                      column(3, 
+                             "sidebar"
+                             ),
+                      column(9,
+                             "main")
+                    )
            )
 
 )
